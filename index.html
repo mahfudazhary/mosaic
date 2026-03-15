@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Pajak Pribadi Indonesia</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --accent: #38bdf8;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --border: #1f2937;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top right, #1d4ed8 0%, #0f172a 38%), var(--bg);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .header {
+      background: color-mix(in oklab, var(--card), black 8%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: 1.55rem; }
+    .subtitle { color: var(--muted); margin: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: color-mix(in oklab, var(--card), black 8%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .card h2 { margin-top: 0; font-size: 1.05rem; }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .form-grid .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: .85rem;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      background: #0b1220;
+      color: var(--text);
+      border: 1px solid #263246;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: .95rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 1px solid #2b3a52;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      color: white;
+      background: #0b1220;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #0284c7, #0369a1);
+      border: none;
+    }
+
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .kpi-item {
+      background: #0b1220;
+      border: 1px solid #263246;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .kpi-title { color: var(--muted); font-size: .8rem; }
+    .kpi-value { font-size: 1.1rem; font-weight: 700; margin-top: 5px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid #263246;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #263246;
+      font-size: .9rem;
+    }
+
+    th { color: var(--muted); font-weight: 600; }
+
+    .note {
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+      margin-top: 10px;
+    }
+
+    .status {
+      margin-top: 8px;
+      color: var(--ok);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="header">
+      <h1>Dashboard Simulasi Pajak Pribadi (PPh 21)</h1>
+      <p class="subtitle">Kalkulator cepat untuk estimasi pajak tahunan orang pribadi di Indonesia berdasarkan lapisan tarif progresif.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Input Data</h2>
+        <div class="form-grid">
+          <div class="full">
+            <label for="nama">Nama Wajib Pajak</label>
+            <input id="nama" placeholder="Contoh: Andi Saputra" />
+          </div>
+
+          <div>
+            <label for="penghasilan">Penghasilan Bruto per Tahun (Rp)</label>
+            <input id="penghasilan" type="number" min="0" value="180000000" />
+          </div>
+
+          <div>
+            <label for="biaya">Biaya Pengurang/Deduksi per Tahun (Rp)</label>
+            <input id="biaya" type="number" min="0" value="6000000" />
+          </div>
+
+          <div>
+            <label for="status">Status PTKP</label>
+            <select id="status">
+              <option value="TK0">TK/0 - Tidak Kawin, tanpa tanggungan</option>
+              <option value="TK1">TK/1 - Tidak Kawin, 1 tanggungan</option>
+              <option value="TK2">TK/2 - Tidak Kawin, 2 tanggungan</option>
+              <option value="TK3">TK/3 - Tidak Kawin, 3 tanggungan</option>
+              <option value="K0">K/0 - Kawin, tanpa tanggungan</option>
+              <option value="K1">K/1 - Kawin, 1 tanggungan</option>
+              <option value="K2">K/2 - Kawin, 2 tanggungan</option>
+              <option value="K3">K/3 - Kawin, 3 tanggungan</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="metode">Tampilkan cicilan</label>
+            <select id="metode">
+              <option value="bulanan">Bulanan</option>
+              <option value="kuartalan">Kuartalan</option>
+              <option value="tahunan">Tahunan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="hitung">Hitung Pajak</button>
+          <button id="reset">Reset</button>
+        </div>
+        <p class="status" id="statusText"></p>
+      </article>
+
+      <article class="card">
+        <h2>Ringkasan</h2>
+        <div class="kpi">
+          <div class="kpi-item">
+            <div class="kpi-title">Penghasilan Neto</div>
+            <div class="kpi-value" id="neto">Rp0</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-title">PKP (Kena Pajak)</div>
+            <div class="kpi-value" id="pkp">Rp0</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-title">PPh Terutang</div>
+            <div class="kpi-value" id="pph">Rp0</div>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Lapisan PKP</th>
+              <th>Tarif</th>
+              <th>Pajak per Lapisan</th>
+            </tr>
+          </thead>
+          <tbody id="detailBody"></tbody>
+        </table>
+
+        <p class="note">
+          Catatan: Simulasi ini ditujukan untuk edukasi/perkiraan. Tarif progresif mengikuti lapisan umum UU HPP (5%, 15%, 25%, 30%, 35%). Pastikan konsultasi ke konsultan pajak atau regulasi terbaru DJP untuk pelaporan resmi.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const ptkpMap = {
+      TK0: 54000000,
+      TK1: 58500000,
+      TK2: 63000000,
+      TK3: 67500000,
+      K0: 58500000,
+      K1: 63000000,
+      K2: 67500000,
+      K3: 72000000,
+    };
+
+    const brackets = [
+      { max: 60000000, rate: 0.05, label: '0 - 60 Juta' },
+      { max: 250000000, rate: 0.15, label: '>60 - 250 Juta' },
+      { max: 500000000, rate: 0.25, label: '>250 - 500 Juta' },
+      { max: 5000000000, rate: 0.30, label: '>500 Juta - 5 Miliar' },
+      { max: Infinity, rate: 0.35, label: '>5 Miliar' },
+    ];
+
+    const fmt = (v) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(v || 0);
+
+    function hitungProgresif(pkp) {
+      let sisa = pkp;
+      let total = 0;
+      let batasSebelumnya = 0;
+      const detail = [];
+
+      for (const b of brackets) {
+        if (sisa <= 0) break;
+        const rentang = b.max === Infinity ? sisa : Math.min(sisa, b.max - batasSebelumnya);
+        const pajak = rentang * b.rate;
+        total += pajak;
+
+        detail.push({
+          label: b.label,
+          rate: (b.rate * 100).toFixed(0) + '%',
+          pajak,
+        });
+
+        sisa -= rentang;
+        batasSebelumnya = b.max;
+      }
+
+      return { total, detail };
+    }
+
+    function render() {
+      const nama = document.getElementById('nama').value || 'Wajib Pajak';
+      const bruto = Number(document.getElementById('penghasilan').value) || 0;
+      const biaya = Number(document.getElementById('biaya').value) || 0;
+      const status = document.getElementById('status').value;
+      const metode = document.getElementById('metode').value;
+
+      const neto = Math.max(0, bruto - biaya);
+      const ptkp = ptkpMap[status] ?? ptkpMap.TK0;
+      const pkp = Math.max(0, neto - ptkp);
+      const { total, detail } = hitungProgresif(pkp);
+
+      let cicilan = total;
+      let periode = 'tahun';
+      if (metode === 'bulanan') {
+        cicilan = total / 12;
+        periode = 'bulan';
+      } else if (metode === 'kuartalan') {
+        cicilan = total / 4;
+        periode = 'kuartal';
+      }
+
+      document.getElementById('neto').textContent = fmt(neto);
+      document.getElementById('pkp').textContent = fmt(pkp);
+      document.getElementById('pph').textContent = fmt(total);
+
+      const tbody = document.getElementById('detailBody');
+      tbody.innerHTML = detail.length
+        ? detail.map((d) => `\n            <tr>\n              <td>${d.label}</td>\n              <td>${d.rate}</td>\n              <td>${fmt(d.pajak)}</td>\n            </tr>\n          `).join('')
+        : '<tr><td colspan="3">Tidak ada pajak terutang (PKP = 0).</td></tr>';
+
+      document.getElementById('statusText').textContent = `${nama}: estimasi pajak ${fmt(total)} (${fmt(cicilan)} / ${periode}).`;
+    }
+
+    document.getElementById('hitung').addEventListener('click', render);
+    document.getElementById('reset').addEventListener('click', () => {
+      document.getElementById('nama').value = '';
+      document.getElementById('penghasilan').value = 180000000;
+      document.getElementById('biaya').value = 6000000;
+      document.getElementById('status').value = 'TK0';
+      document.getElementById('metode').value = 'bulanan';
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
