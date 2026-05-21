@@ -1,0 +1,30 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Office working files (originals belong on the practice file share, not in git)
+~$*
+*.tmp
+
+# Engagement working files that shouldn't be committed
+# (commit the final artifacts; keep noisy intermediates out)
+engagements/**/_working/
+engagements/**/_scratch/
+
+# Local environment
+.env
+.env.local
+
+# Render output
+_site/
+*.pdf
+!docs/**/*.pdf
+!examples/**/*.pdf
+
+# Spreadsheet locks
+*.lock
