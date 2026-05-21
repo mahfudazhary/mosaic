@@ -15,7 +15,7 @@ This repository is the **practice template** for running engagements with MOSAIC
 | [`docs/`](docs/) | The framework reference — Spine, CADRE, Lens, six-phase Method, ADRs, maturity model, glossary | Read-only (update only via Practice Methodology Working Group) |
 | [`templates/`](templates/) | Empty templates you copy per engagement: charter, CADRE register, ADR, scorecard, HLD/LLD, ops spec, drift report | Copy → fill → commit |
 | [`patterns/`](patterns/) | Pattern Library at the Logical layer (L3) with multi-implementation matrix | Reuse; propose additions via PR |
-| [`overlays/`](overlays/) | Pluggable compliance overlays (ID-FSI, ID-GOV, ASEAN-FSI, EU-FIN, PCI, AI, HC, SUSTAIN) | Load relevant ones at Frame |
+| [`overlays/`](overlays/) | Pluggable compliance overlays (ID-FSI, ID-GOV, ASEAN-FSI, EU-FIN, GLOBAL-CARD, AI, HC, SUSTAIN) | Load relevant ones at Frame |
 | [`examples/`](examples/) | Worked example — Indonesian FSI core-banking modernization (anonymized) | Reference; don't edit |
 | [`engagements/`](engagements/) | Where each live engagement lives — one folder per client/project | Create via the bootstrap script |
 | [`scripts/`](scripts/) | Helper scripts (engagement bootstrap, scorecard calculator) | Run as needed |
