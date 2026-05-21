@@ -1,6 +1,6 @@
 # 4. Axis 1 — The Spine (Six Abstraction Layers)
 
-The Spine is the framework's **vertical axis**. It organizes architectural content by abstraction level, from business outcomes at the top through operational reality at the bottom. The six layers extend SABSA and the VMware Conceptual–Logical–Physical progression to cover both upstream business strategy and downstream operations within the same hierarchy.
+The Spine is the framework's **vertical axis**. It organizes architectural content by abstraction level, from business outcomes at the top through operational reality at the bottom. The six layers extend a security-architecture framework and an industry-standard Conceptual–Logical–Physical progression to cover both upstream business strategy and downstream operations within the same hierarchy.
 
 Each layer answers a distinct question and produces distinct deliverables. **Crossing layer boundaries during design requires explicit traceability**: a Physical-layer decision must cite the Logical-layer pattern it implements, which must cite the Capability it satisfies, which must cite the business outcome from the Strategy layer.
 
@@ -50,7 +50,7 @@ Capability is the **bridge between business intent and technology realization**.
 
 > "Continuous data protection with point-in-time recovery to a separate fault domain" is a capability.
 >
-> "Veeam replication to AWS" is not.
+> "Product X replication to public-cloud Region Y" is not.
 
 The layer produces three artifacts:
 
@@ -64,7 +64,7 @@ Capabilities are the unit of value handover from architecture to product managem
 
 Logical is where architecture as a craft happens. It selects **architectural patterns and technology classes — not vendor products**.
 
-> A Logical decision states that the design will use a hyperconverged infrastructure pattern, with software-defined storage and overlay networking, supporting both VM and container workloads, with cross-site asynchronous replication for DR. It does **not** yet state whether the implementation will be VMware Cloud Foundation, Nutanix AHV, or Azure Local.
+> A Logical decision states that the design will use a hyperconverged infrastructure pattern, with software-defined storage and overlay networking, supporting both VM and container workloads, with cross-site asynchronous replication for DR. It does **not** yet state whether the implementation will be implementation A, B, or C from the pattern library.
 
 **Logical artifacts include:**
 
@@ -89,7 +89,7 @@ Physical **binds Logical patterns to specific vendor products and configurations
 
 Physical artifacts are **version-specific and date-stamped** because vendor product offerings and supported configurations change continuously.
 
-A consequence of the pattern–implementation separation (Principle 2): **the Physical layer can be re-implemented without re-architecting**. A client that decides to displace VMware with Nutanix can swap the Physical layer (BoM, configurations, integration specs) for the affected pattern while leaving the Logical layer intact. This is the lever that makes vendor neutrality operationally achievable rather than aspirational.
+A consequence of the pattern–implementation separation (Principle 2): **the Physical layer can be re-implemented without re-architecting**. A client that decides to displace one vendor's stack with another's can swap the Physical layer (BoM, configurations, integration specs) for the affected pattern while leaving the Logical layer intact. This is the lever that makes vendor neutrality operationally achievable rather than aspirational.
 
 ### 4.2.6 Layer 5 — Operational
 

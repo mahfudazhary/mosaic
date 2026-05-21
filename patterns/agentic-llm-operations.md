@@ -40,18 +40,18 @@ Particularly volatile pillar profile — varies with the agent's autonomy level 
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Amazon Bedrock AgentCore (GA Oct 2025) | Hosted agent runtime; deep AWS service integration | AWS-only; sovereignty considerations | AWS Bedrock AgentCore docs |
-| Azure AI Foundry | Hosted agent runtime; Microsoft ecosystem | Azure-only; sovereignty considerations | Microsoft Azure AI Foundry docs |
-| Custom LangGraph or LangChain + vLLM (on-prem) | Maximum control; on-prem inference for sovereignty-sensitive workloads | Engineering investment; LangChain churn historically | LangChain / vLLM project docs |
-| NVIDIA NIM (on-premises) | Reference inference microservices; multi-model support | NVIDIA hardware and license commitment | NVIDIA NIM docs |
-| LiteLLM gateway + open framework | Vendor-neutral inference routing | Engineering investment for gateway operations | LiteLLM project docs |
-| Anthropic Claude API + agent framework | Strong tool-use and reasoning models; long context; managed safety features | API-only — sovereignty review required for regulated workloads | Claude API docs |
+| Implementation A — Hyperscaler 1 native agent runtime | Hosted agent runtime; deep hyperscaler service integration | Single-hyperscaler lock-in; sovereignty considerations | Hyperscaler's agent-runtime docs |
+| Implementation B — Hyperscaler 2 native agent runtime | Hosted agent runtime; tight ecosystem integration | Single-hyperscaler lock-in; sovereignty considerations | Hyperscaler's agent-runtime docs |
+| Implementation C — self-hosted agent framework + open-source inference (on-prem) | Maximum control; on-prem inference for sovereignty-sensitive workloads | Engineering investment; open-source framework churn historically | Project docs for the chosen framework and inference server |
+| Implementation D — GPU-vendor inference microservices (on-premises) | Reference inference microservices; multi-model support | Hardware and license commitment to the GPU vendor's stack | GPU-vendor inference microservices docs |
+| Implementation E — vendor-neutral inference gateway + open framework | Vendor-neutral inference routing | Engineering investment for gateway operations | Inference-gateway project docs |
+| Implementation F — managed model API + agent framework | Strong tool-use and reasoning models; long context; managed safety features | API-only — sovereignty review required for regulated workloads | Managed-model-API docs |
 
 ## 6. Decision criteria
 
 - Sovereignty constraints on the inference data (often the hardest constraint to satisfy).
 - Tolerance for vendor-managed agent runtime vs. self-hosted.
-- Existing platform direction (Kubernetes-first → custom stack; AWS-first → Bedrock).
+- Existing platform direction (Kubernetes-first → self-hosted stack; hyperscaler-first → that hyperscaler's native agent runtime).
 - Whether the engagement requires reproducibility of agent reasoning for audit (favors fully owned stack).
 
 ## 7. Anti-patterns

@@ -27,9 +27,9 @@ The current network is segmented only at perimeter firewalls; intra-zone east-we
 Lowest disruption, no new product to operate. Fails to satisfy R-001 (no encryption at L2 between hosts on the same VLAN) and adds operational toil (VLAN proliferation, change-control overhead). Estimated 6–8 month roll-out per zone.
 
 ### Option B — Overlay networking with software-defined segmentation, encrypted by default
-Satisfies R-001 (per-flow encryption and identity-aware policy). Compatible with multiple implementations (NSX, ACI, Calico Cloud, Cilium). Adds a new operational surface but consolidates segmentation policy into one control plane. Requires uplift in operator skills.
+Satisfies R-001 (per-flow encryption and identity-aware policy). Compatible with multiple implementations (hypervisor-native segmentation, network-fabric segmentation, container-native segmentation, eBPF segmentation). Adds a new operational surface but consolidates segmentation policy into one control plane. Requires uplift in operator skills.
 
-### Option C — Per-host agent micro-segmentation (Illumio, Cisco Secure Workload)
+### Option C — Per-host agent micro-segmentation
 Satisfies R-001. Highest control granularity. Violates R-007 (no agents on hypervisor management plane) and would require carve-out negotiation with CISO. Higher cost on a per-workload basis.
 
 ## Quality Impact

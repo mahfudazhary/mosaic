@@ -148,6 +148,18 @@ Sovereignty boundary: both DCs and witness within Indonesian jurisdiction. Witne
 | Backup posture | Immutable repo + isolated cyber-recovery vault | Replicated backup only | ADR-0021 |
 | Identity | Central directory + federated SaaS + PAM broker | Per-system local accounts | ADR-0012 |
 
+### 4.5 L3 implementation matrix
+
+| Aspect                  | Implementation A — Incumbent HCI (continue) | Implementation B — Alternative HCI (displace) |
+| ---                     | ---                                          | ---                                            |
+| Compute/platform        | Current major release of the incumbent HCI stack with stretched-cluster storage; vendor-native overlay segmentation | Current major release of the alternative HCI stack with metro-availability variant; vendor-native overlay segmentation |
+| DR mechanism            | Incumbent stretched cluster (synchronous between sites) + platform-native DR orchestration for orchestrated failover | Alternative platform metro availability (synchronous) + platform-native protection-policy orchestration |
+| Container support       | Incumbent HCI's bundled Kubernetes service on the same HCI instance | Alternative HCI's bundled Kubernetes service on the same HCI cluster |
+| Initial CapEx           | IDR 128 billion (hardware refresh + license uplift) | IDR 134 billion (hardware refresh + license + skill transition allowance) |
+| Steady-state OpEx       | IDR 36 billion/year (incumbent vendor subscription + support) | IDR 31 billion/year (alternative vendor subscription + support) |
+| Skill alignment         | Strong (current operations team trained on incumbent hypervisor) | Moderate (cross-training required; partially mitigates E-002) |
+| Vendor concentration    | Single-vendor dependency on the incumbent (E-001 high residual) | Single-vendor dependency on the alternative (E-001 reduced) |
+
 ## 5. Traceability matrix (selected)
 
 | Strategy outcome | Capability | Pattern | ADRs |
@@ -158,7 +170,7 @@ Sovereignty boundary: both DCs and witness within Indonesian jurisdiction. Witne
 
 ## 6. Open items for L4 / LLD
 
-- Final implementation selection between VCF stretched cluster and Nutanix Metro Availability (recorded in ADR-0014; LLD ADR confirms binding).
+- Final implementation selection between incumbent HCI stretched cluster and alternative HCI metro-availability variant (recorded in ADR-0014; LLD ADR confirms binding).
 - Witness placement (ADR-0015).
 - Inter-site network capacity decision (ADR-0017).
 - Observability stack choice (ADR-0019; L4 binding deferred).

@@ -15,7 +15,7 @@ GPU-aware infrastructure plus tooling for the ML lifecycle — data preparation,
 - Model governance is a regulatory requirement (EU AI Act, NIST AI RMF, sector-specific).
 
 **Do not use this pattern when:**
-- The engagement is single-application (a single LLM-powered feature) — use the managed inference offering from the relevant hyperscaler.
+- The engagement is single-application (a single LLM-powered feature) — use a managed inference offering from a hyperscaler.
 - The training/inference workload fits comfortably within a single workstation or a cloud-managed notebook.
 
 ## 3. Logical structure
@@ -38,18 +38,18 @@ Cost and Sustainability are low because GPU economics and energy intensity domin
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| VCF Private AI Foundation with NVIDIA | Tight VCF integration; NVIDIA AI Enterprise stack | Broadcom commercial trajectory; on-prem GPU capacity must be sourced | VMware Private AI docs |
-| Red Hat OpenShift AI | Kubernetes-native; open ecosystem | OpenShift skill prerequisite; less opinionated about ML workflow | Red Hat OpenShift AI docs |
-| NVIDIA AI Enterprise (standalone) | Reference architectures for major hypervisors; NIM microservices | Hardware and license commitment to NVIDIA | NVIDIA AI Enterprise docs |
-| AWS SageMaker | Mature managed MLOps with broad service catalog | AWS-only; sovereignty considerations | AWS SageMaker docs |
-| Google Vertex AI | Strong on Gemini and Google's foundation models | GCP-only; sovereignty considerations | Google Vertex AI docs |
-| Azure ML | Tight Microsoft ecosystem integration | Azure-only; sovereignty considerations | Microsoft Azure ML docs |
+| Implementation A — incumbent-HCI-bundled AI stack | Tight integration with the incumbent HCI platform; GPU-vendor AI Enterprise stack | Incumbent-HCI commercial trajectory; on-prem GPU capacity must be sourced | Incumbent HCI vendor's AI-stack docs |
+| Implementation B — enterprise-Kubernetes AI platform | Kubernetes-native; open ecosystem | Kubernetes-distribution skill prerequisite; less opinionated about ML workflow | Kubernetes-distribution vendor's AI-platform docs |
+| Implementation C — GPU-vendor AI Enterprise stack (standalone) | Reference architectures for major hypervisors; vendor inference microservices | Hardware and license commitment to the GPU vendor | GPU-vendor AI Enterprise docs |
+| Implementation D — Hyperscaler 1 native ML platform | Mature managed MLOps with broad service catalog | Single-hyperscaler lock-in; sovereignty considerations | Hyperscaler's ML-platform docs |
+| Implementation E — Hyperscaler 2 native ML platform | Strong on the hyperscaler's foundation models | Single-hyperscaler lock-in; sovereignty considerations | Hyperscaler's ML-platform docs |
+| Implementation F — Hyperscaler 3 native ML platform | Tight ecosystem integration | Single-hyperscaler lock-in; sovereignty considerations | Hyperscaler's ML-platform docs |
 
 ## 6. Decision criteria
 
 - Training vs. inference workload mix (training favors on-prem economics at scale; inference favors edge/cloud).
 - Sovereignty of training data — onshore requirements often drive on-prem GPU procurement.
-- Existing platform direction (Kubernetes-first → OpenShift AI; VMware-first → VCF Private AI).
+- Existing platform direction (Kubernetes-first → enterprise-Kubernetes AI platform; incumbent-HCI-first → incumbent-HCI-bundled AI stack).
 - Model risk governance requirements (AI overlay loaded?).
 
 ## 7. Anti-patterns

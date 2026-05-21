@@ -14,7 +14,7 @@ This repository is the **practice template** for running engagements with MOSAIC
 | --- | --- | --- |
 | [`docs/`](docs/) | The framework reference — Spine, CADRE, Lens, six-phase Method, ADRs, maturity model, glossary | Read-only (update only via Practice Methodology Working Group) |
 | [`templates/`](templates/) | Empty templates you copy per engagement: charter, CADRE register, ADR, scorecard, HLD/LLD, ops spec, drift report | Copy → fill → commit |
-| [`patterns/`](patterns/) | Pattern Library at the Logical layer (L3) with multi-vendor Implementation matrix | Reuse; propose additions via PR |
+| [`patterns/`](patterns/) | Pattern Library at the Logical layer (L3) with multi-implementation matrix | Reuse; propose additions via PR |
 | [`overlays/`](overlays/) | Pluggable compliance overlays (ID-FSI, ID-GOV, ASEAN-FSI, EU-FIN, PCI, AI, HC, SUSTAIN) | Load relevant ones at Frame |
 | [`examples/`](examples/) | Worked example — Indonesian FSI core-banking modernization (anonymized) | Reference; don't edit |
 | [`engagements/`](engagements/) | Where each live engagement lives — one folder per client/project | Create via the bootstrap script |
@@ -79,7 +79,7 @@ Read [`docs/03-framework-overview.md`](docs/03-framework-overview.md) first, the
 ## The seven operating principles (in precedence order)
 
 1. **Outcome anchors everything.** Every decision traces to a business outcome.
-2. **Patterns before products.** L3 selects patterns; L4 binds them to vendor products.
+2. **Patterns before products.** L3 selects patterns; L4 binds them to specific products.
 3. **Every consequential decision is recorded.** As a MOSAIC ADR.
 4. **Quality is multi-dimensional and explicit.** Eight pillars, scored.
 5. **Sovereignty is first-class.** Not a sub-attribute of security.
@@ -127,11 +127,11 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to propose pattern/overlay addi
 
 ## Heritage
 
-MOSAIC is a synthesis, not an invention. It borrows from SABSA, VMware CLP/RACR/AMPRS, TOGAF ADM, ISO 25010, AWS/Azure/GCP WAF, NIST CSF, SRE/ITIL/IT4IT, Zachman, Nygard ADRs, CMMI, and the Christopher Alexander pattern tradition. Full attribution in [`docs/13-heritage.md`](docs/13-heritage.md).
+MOSAIC is a synthesis, not an invention. It borrows from a security-architecture framework, an enterprise virtualization vendor's Conceptual–Logical–Physical / Requirements–Assumptions–Constraints–Risks / five-attribute quality models, a vendor-neutral enterprise-architecture method, an international software-quality standard, public-cloud Well-Architected Frameworks, NIST CSF, the modern site-reliability-engineering tradition (SLO/SLI/error budget), a recognized IT-service-management framework, an IT value-stream reference architecture, a foundational enterprise-architecture framework, a community-standard ADR format, established maturity models, and the Christopher Alexander pattern tradition. Full attribution in [`docs/13-heritage.md`](docs/13-heritage.md).
 
 The unique contributions are:
 1. **Sovereignty** and **Adaptability** as first-class quality pillars (not sub-attributes).
-2. Explicit **pattern–implementation separation** that lets a single pattern carry multiple vendor realizations.
+2. Explicit **pattern–implementation separation** that lets a single pattern carry multiple realizations.
 3. **Pluggable compliance overlays** that snap onto the framework without modifying its core.
 4. **Engagement-weighted fitness function** for pillar scoring.
 

@@ -16,7 +16,7 @@ A data-plane and control-plane layer that provides identity-aware service-to-ser
 
 **Do not use this pattern when:**
 - The estate has fewer than ~10 services and is operationally stable — the mesh adds more complexity than it removes.
-- The CNI already provides identity-aware policy at L3/L4 sufficient for the requirement (Cilium without mesh, for example).
+- The CNI already provides identity-aware policy at L3/L4 sufficient for the requirement (an eBPF-native CNI without mesh, for example).
 
 ## 3. Logical structure
 
@@ -37,17 +37,17 @@ Performance is contextual — proxy-based meshes add ~1–3ms p99; eBPF meshes a
 
 | Implementation | Prerequisites | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Istio | Kubernetes; operational maturity | Most feature-complete; complex to operate; sidecar default with ambient mode available | Istio docs |
-| Linkerd | Kubernetes | Simpler operations; smaller feature surface | Linkerd docs |
-| Cilium Service Mesh | Cilium CNI | eBPF-based; sidecar-free; tight integration with networking | Cilium service mesh docs |
-| OpenShift Service Mesh | OpenShift | Bundled, supported Istio variant | Red Hat OpenShift Service Mesh docs |
-| AWS App Mesh | AWS workloads | Cloud-native; declining strategic investment from AWS — confirm roadmap | AWS App Mesh docs |
+| Implementation A — feature-complete sidecar mesh | Kubernetes; operational maturity | Most feature-complete; complex to operate; sidecar default with ambient mode available | Mesh project docs |
+| Implementation B — simpler open-source mesh | Kubernetes | Simpler operations; smaller feature surface | Mesh project docs |
+| Implementation C — eBPF-native mesh | eBPF-native CNI | eBPF-based; sidecar-free; tight integration with networking | Mesh project docs |
+| Implementation D — vendor-bundled mesh | Opinionated enterprise Kubernetes distribution | Bundled, vendor-supported variant of the feature-complete sidecar mesh | Vendor's mesh docs |
+| Implementation E — cloud-native mesh | Hyperscaler workloads | Cloud-native; declining strategic investment from the hyperscaler — confirm roadmap | Hyperscaler's mesh docs |
 
 ## 6. Decision criteria
 
 - Sidecar tolerance — sidecar density can double pod count and resource cost.
 - Skill profile of the platform engineering team.
-- Existing CNI choice — Cilium changes the calculus.
+- Existing CNI choice — an eBPF-native CNI changes the calculus.
 - Single-cluster vs. multi-cluster scope.
 
 ## 7. Anti-patterns

@@ -24,7 +24,7 @@ Extends an on-premises control plane into one or more public-cloud regions, pres
 
 - **On-prem stack** — typically Hyperconverged or Disaggregated private cloud.
 - **Cloud region(s)** — provisioned with the hyperscaler's hybrid offering (same hypervisor / management plane as on-prem).
-- **Connectivity** — dedicated link (Direct Connect / ExpressRoute / Cloud Interconnect) plus VPN fallback.
+- **Connectivity** — dedicated link (hyperscaler-provided private interconnect) plus VPN fallback.
 - **Identity bridge** — federated identity, common policy plane.
 - **Data plane** — replication or storage gateway for stateful workloads spanning sites.
 
@@ -40,11 +40,11 @@ Sovereignty score is highly contextual — onshore-only requirements may rule ou
 
 | Implementation | Prerequisites | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| VCF on AWS / Azure VMware Solution / Google Cloud VMware Engine | Existing VCF estate; hyperscaler relationship | Operating-model continuity; commercial costs follow Broadcom + hyperscaler | VCF on cloud docs (per hyperscaler) |
-| Nutanix Cloud Clusters (NC2) on AWS / Azure | Nutanix estate; hyperscaler subscription | Operating-model continuity; Nutanix-native experience in cloud | Nutanix NC2 docs |
-| Azure Local (formerly Azure Stack HCI) | Azure subscription; on-prem hardware from QCS list | Cloud control plane operating on-prem hardware | Microsoft Azure Local docs |
-| AWS Outposts | AWS account; eligible region | AWS-native services on-prem; rack-scale unit; limited service catalog parity | AWS Outposts user guide |
-| Google Anthos (Distributed Cloud) | GCP project; Anthos subscription | Strong Kubernetes story; less mature for VM-only workloads | Google Anthos docs |
+| Implementation A — incumbent enterprise HCI on Hyperscaler 1 / 2 / 3 | Existing incumbent-HCI estate; hyperscaler relationship | Operating-model continuity; commercial costs follow incumbent HCI vendor + hyperscaler | Incumbent HCI vendor's cloud-extension docs (per hyperscaler) |
+| Implementation B — alternative enterprise HCI on Hyperscaler 1 / 2 | Alternative-HCI estate; hyperscaler subscription | Operating-model continuity; alternative-HCI-native experience in cloud | Alternative HCI vendor's cloud-extension docs |
+| Implementation C — cloud-managed HCI | Hyperscaler subscription; on-prem hardware from the hyperscaler's qualified list | Cloud control plane operating on-prem hardware | Hyperscaler's cloud-managed HCI docs |
+| Implementation D — Hyperscaler 1 on-prem rack appliance | Hyperscaler account; eligible region | Hyperscaler-native services on-prem; rack-scale unit; limited service catalog parity | Hyperscaler's on-prem rack appliance user guide |
+| Implementation E — Hyperscaler 3 distributed-cloud platform | Hyperscaler project; platform subscription | Strong Kubernetes story; less mature for VM-only workloads | Hyperscaler's distributed-cloud docs |
 
 ## 6. Decision criteria
 

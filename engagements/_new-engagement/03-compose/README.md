@@ -8,7 +8,7 @@
 - CADRE register (baselined from Capture).
 - [Pattern Library](../../../patterns/).
 - Compliance overlay deliverable expectations.
-- Vendor reference designs (NVDs, CVDs, VVDs) at L4.
+- Vendor reference designs at L4.
 
 ## Outputs
 - [`hld.md`](hld.md) — L1, L2, L3 content.

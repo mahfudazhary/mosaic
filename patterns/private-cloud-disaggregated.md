@@ -35,20 +35,20 @@ A private-cloud pattern in which compute, storage, and networking scale **indepe
 
 | Implementation | Version (as of 2026-05) | Prerequisites | Trade-offs | Canonical doc |
 | --- | --- | --- | --- | --- |
-| Bare-metal + Ceph + KubeVirt | Ceph Squid; KubeVirt 1.4 | Strong platform engineering capability | Vendor-neutral; high operational investment; deepest cost optimization potential | Ceph and KubeVirt project docs |
-| vSphere + external SAN/NAS (Pure, NetApp, Dell PowerStore) | vSphere 9; arrays current | Storage vendor support contract | Conservative shape; well-understood; storage refresh independent of hypervisor | Vendor reference architectures |
-| Red Hat OpenShift Virtualization | OpenShift 4.18+ | OpenShift subscription; storage layer (ODF or external) | Containers and VMs in one platform; strong on-prem story; emergent vendor for VM-heavy workloads | Red Hat OpenShift Virtualization docs |
+| Implementation A — bare-metal + open-source distributed storage + open-source KVM virtualization | Current major releases of the open-source storage and virtualization layers | Strong platform engineering capability | Vendor-neutral; high operational investment; deepest cost optimization potential | Open-source project docs |
+| Implementation B — incumbent hypervisor + external SAN/NAS arrays | Current major release; arrays current | Storage vendor support contract | Conservative shape; well-understood; storage refresh independent of hypervisor | Vendor reference architectures |
+| Implementation C — enterprise-Kubernetes-bundled virtualization | Current major release | Vendor subscription; storage layer (vendor-bundled or external) | Containers and VMs in one platform; strong on-prem story; emergent vendor for VM-heavy workloads | Kubernetes-distribution vendor's virtualization docs |
 
 ## 6. Decision criteria
 
 - Storage protocol mix needed (block vs file vs object).
 - Existing SAN/NAS investments and remaining lifecycle.
-- Whether VM migration off vSphere is a strategic direction (then OpenShift Virtualization is attractive).
-- Day-2 platform engineering bench depth (Ceph operations is non-trivial).
+- Whether VM migration off the incumbent hypervisor is a strategic direction (then enterprise-Kubernetes-bundled virtualization is attractive).
+- Day-2 platform engineering bench depth (open-source distributed-storage operations is non-trivial).
 
 ## 7. Anti-patterns
 
-- **Treating Ceph as a turn-key appliance.** It is a platform that requires platform-engineering investment.
+- **Treating open-source distributed storage as a turn-key appliance.** It is a platform that requires platform-engineering investment.
 - **Disaggregating "because we always have"** when workload profile actually fits HCI better.
 - **Allowing storage and compute refresh cycles to diverge so far** that one tier becomes the bottleneck for the other.
 

@@ -22,7 +22,7 @@
 
 ## 3. Value hypothesis
 
-A modern dual-site active-active architecture will reduce business-continuity risk (RPO/RTO well inside OJK expectations), decrease the cost of compliance reporting (continuous evidence vs. point-in-time), and create commercial flexibility on platform vendor selection by sustaining at least two viable implementation paths. The Broadcom renewal triggers the decision; the value is durable beyond it.
+A modern dual-site active-active architecture will reduce business-continuity risk (RPO/RTO well inside OJK expectations), decrease the cost of compliance reporting (continuous evidence vs. point-in-time), and create commercial flexibility on platform vendor selection by sustaining at least two viable implementation paths. The incumbent vendor subscription renewal triggers the decision; the value is durable beyond it.
 
 ## 4. Success criteria
 
@@ -48,7 +48,7 @@ A modern dual-site active-active architecture will reduce business-continuity ri
 ## 6. Scope boundary
 
 **In scope:**
-- Core-banking workload running on the current VCF estate.
+- Core-banking workload running on the current incumbent HCI estate.
 - Jakarta primary DC; Surabaya secondary DC (currently passive DR).
 - Identity and PAM integration for the in-scope workload.
 - Observability and runbook scope for the in-scope workload.

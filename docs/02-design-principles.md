@@ -10,7 +10,7 @@ Every architectural decision must trace to a business outcome. Outcomes are capt
 
 Logical-layer (L3) decisions describe technology classes and architectural patterns. Physical-layer (L4) decisions bind those patterns to specific vendor products. The two must not be conflated.
 
-An architecture that begins with a product ("we will use VCF") and works backward to justify it is fragile to changes in commercial conditions, version availability, or regulatory environment. An architecture that begins with a pattern and selects a product from a set of validated implementations is far less exposed to those changes.
+An architecture that begins with a product ("we will use Vendor X's converged platform") and works backward to justify it is fragile to changes in commercial conditions, version availability, or regulatory environment. An architecture that begins with a pattern and selects a product from a set of validated implementations is far less exposed to those changes.
 
 ## Principle 3 — Every consequential decision is recorded
 

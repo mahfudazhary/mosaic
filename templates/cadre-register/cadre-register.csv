@@ -1,5 +1,5 @@
 Element,ID,Statement,Type/Subcategory,Likelihood,Impact,MoSCoW,Testability/Citation/Validation,Waivable,Mitigation_Plan,Mitigation_Owner,Residual,Source,Owner,Status,Related_ADRs,Pillar_Tags,Date_Captured,Last_Reviewed
-Context,C-001,"e.g., Broadcom subscription renewal Q3 2026 triggered displacement evaluation",,,,,,,,,,Sponsor interview,Name,Active,,"Cost,Adaptability",YYYY-MM-DD,YYYY-MM-DD
+Context,C-001,"e.g., Incumbent platform subscription renewal Q3 2026 triggered displacement evaluation",,,,,,,,,,Sponsor interview,Name,Active,,"Cost,Adaptability",YYYY-MM-DD,YYYY-MM-DD
 Context,C-002,,,,,,,,,,,,,Active,,,,
 Assumption,A-001,"e.g., 2024 workload assessment remains representative for 18 months",,,,,Refresh assessment in parallel with Compose,,Capacity upgrade in year 1,Name,,Capacity team,Name,Active,,Performance,YYYY-MM-DD,YYYY-MM-DD
 Assumption,A-002,,,,,,,,,,,,,Active,,,,
@@ -9,6 +9,6 @@ Demand,D-003,,Non-functional,,,,,,,,,,,Active,,,,
 Restriction,R-001,"e.g., Tier-1 services must satisfy documented RPO <= 15 min, RTO <= 1 hr",Compliance mandate,,,,POJK 11/POJK.03/2022,No,,,,ID-FSI overlay,Name,Active,,"Availability,Sovereignty",YYYY-MM-DD,YYYY-MM-DD
 Restriction,R-002,,Compliance mandate,,,,,,,,,,,Active,,,,
 Restriction,R-003,,Operational constraint,,,,,Conditional,,,,,,Active,,,,
-Exposure,E-001,"e.g., Broadcom pricing volatility could increase steady-state OpEx beyond R-003 envelope",Risk,4,4,,,,Maintain Adaptability >= 4 to preserve displacement option,Name,3,Vendor briefing,Name,Active,,"Cost,Adaptability",YYYY-MM-DD,YYYY-MM-DD
+Exposure,E-001,"e.g., Incumbent vendor pricing volatility could increase steady-state OpEx beyond R-003 envelope",Risk,4,4,,,,Maintain Adaptability >= 4 to preserve displacement option,Name,3,Vendor briefing,Name,Active,,"Cost,Adaptability",YYYY-MM-DD,YYYY-MM-DD
 Exposure,E-002,,Risk,,,,,,,,,,,Active,,,,
 Exposure,E-003,,Dependency,,,,,,,,,,,Active,,,,

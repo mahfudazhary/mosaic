@@ -4,9 +4,9 @@ The Lens is MOSAIC's **evaluation framework**. It defines the eight quality attr
 
 The eight pillars synthesize and extend the dominant quality frameworks:
 
-- **AMPRS** contributes Availability, Manageability (renamed Operability), Performance, Recoverability (folded into Availability), and Security.
-- **ISO/IEC 25010** contributes Maintainability and Portability (rolled into Operability and Adaptability).
-- **AWS, Azure, and GCP Well-Architected Frameworks** contribute Cost and Sustainability.
+- An enterprise virtualization vendor's five-attribute quality model contributes Availability, Manageability (renamed Operability), Performance, Recoverability (folded into Availability), and Security.
+- An international software-quality standard contributes Maintainability and Portability (rolled into Operability and Adaptability).
+- Public-cloud Well-Architected Frameworks contribute Cost and Sustainability.
 - **MOSAIC adds Sovereignty and Adaptability as first-class pillars**, recognizing them as concerns that the other frameworks under-serve in the regional and commercial contexts the practice operates in.
 
 ## 6.1 Pillar summary
@@ -73,7 +73,7 @@ Measures the architecture's ability to evolve without forklift change.
 - **Adaptability** captures modularity, looseness of coupling, and evolvability over time.
 - **Portability** captures freedom from vendor lock-in and the practical cost of moving workloads between implementations.
 
-The pillar is **first-class** because vendor displacement is now a recurring engagement type (Broadcom transitions, hyperscaler exit, cost-driven repatriation) and clients demand exit-cost visibility as part of the original commitment.
+The pillar is **first-class** because vendor displacement is now a recurring engagement type (incumbent-vendor transitions, hyperscaler exit, cost-driven repatriation) and clients demand exit-cost visibility as part of the original commitment.
 
 **Representative metrics:** API and data portability score (fraction of integrations using standard rather than proprietary interfaces); lock-in dependency count (number of vendor-specific features the architecture relies on); estimated time to exit (how long to move to a different implementation); modularity index (average blast radius of a component replacement).
 

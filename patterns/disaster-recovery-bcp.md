@@ -35,19 +35,19 @@ Four sub-shapes, in increasing protection (and cost):
 
 | Implementation | Sub-shape supported | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| VMware Live Site Recovery (formerly SRM) | Async + orchestration | VCF estates; mature orchestration | VMware Live Site Recovery docs |
-| Nutanix Protection Policies + Metro Availability | Async / Sync / Active-active | Nutanix estates; integrated experience | Nutanix DR docs |
-| Veeam Replication | Backup + async | Vendor-neutral replication; pairs with most platforms | Veeam Replication docs |
-| Zerto | Continuous data protection (CDP) — async with seconds-RPO | Cross-platform; mature CDP; commercial cost | Zerto user guide |
-| Druva | Cloud-first backup-and-recovery (SaaS) | OpEx model; recovery into managed cloud; sovereignty review essential | Druva docs |
-| Native cloud DR services (AWS Elastic Disaster Recovery, Azure Site Recovery, Google ASR) | Async + orchestration | Pairs with hybrid extension pattern; cost predictable | Hyperscaler docs |
+| Implementation A — incumbent platform-native DR orchestration | Async + orchestration | Incumbent HCI estates; mature orchestration | Incumbent HCI vendor's DR docs |
+| Implementation B — alternative platform-native DR orchestration | Async / Sync / Active-active | Alternative HCI estates; integrated experience | Alternative HCI vendor's DR docs |
+| Implementation C — vendor-neutral replication | Backup + async | Vendor-neutral replication; pairs with most platforms | Replication vendor's docs |
+| Implementation D — continuous data protection (CDP) appliance | Continuous data protection (CDP) — async with seconds-RPO | Cross-platform; mature CDP; commercial cost | CDP vendor's user guide |
+| Implementation E — SaaS backup-and-DR | Cloud-first backup-and-recovery (SaaS) | OpEx model; recovery into managed cloud; sovereignty review essential | SaaS backup-and-DR vendor's docs |
+| Implementation F — hyperscaler-native DR services | Async + orchestration | Pairs with hybrid extension pattern; cost predictable | Hyperscaler docs |
 
 ## 6. Decision criteria
 
 - What are the contractual or regulatory RPO/RTO targets?
 - Is the workload eligible for active-active (sync replication tolerance, application idempotency)?
 - Are both sites in the same sovereignty jurisdiction?
-- Is a vendor-neutral replication preferable (e.g., Veeam) over a platform-native one?
+- Is a vendor-neutral replication preferable over a platform-native one?
 
 ## 7. Anti-patterns
 

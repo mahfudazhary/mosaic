@@ -7,7 +7,7 @@
 
 ## 1. Pillar scores
 
-Implementation A (VCF stretched cluster) carried as primary; Implementation B (Nutanix Metro Availability) documented as fallback per R-005. Scoring against Implementation A; B scores within ±5% on aggregate.
+Implementation A — Incumbent HCI (stretched cluster) carried as primary; Implementation B — Alternative HCI (metro-availability variant) documented as fallback per R-005. Scoring against Implementation A; B scores within ±5% on aggregate.
 
 | # | Pillar | Reviewer | Score | Weight | Weighted | Floor | Floor met? | Notes |
 | :-: | --- | --- | :---: | :---: | :---: | :---: | :---: | --- |
@@ -18,7 +18,7 @@ Implementation A (VCF stretched cluster) carried as primary; Implementation B (N
 | 5 | Cost & FinOps | CFO delegate | 3 | 10 | 30 | — | — | Within budget envelope; cost-attribution to business units not yet implemented. |
 | 6 | Sustainability & GreenOps | ESG lead | 3 | 4 | 12 | — | — | Refresh to current-generation hardware reduces PUE; ESG reporting integration in roadmap. |
 | 7 | Sovereignty & Compliance | Compliance Director | 4 | 20 | 80 | 4 | ✅ | All onshore; ID-FSI floors met; OJK submission packet drafted. |
-| 8 | Adaptability & Portability | Lead architect | 3 | 8 | 24 | — | — | Two implementations validated at L4 (R-005 met). Data-portability score limited by VCF-specific storage policies. |
+| 8 | Adaptability & Portability | Lead architect | 3 | 8 | 24 | — | — | Two implementations validated at L4 (R-005 met). Data-portability score limited by incumbent-platform-specific storage policies. |
 | | **Total** | | | **100** | **366 / 500** | | | |
 
 ## 2. Fitness verdict
@@ -47,8 +47,8 @@ Implementation A (VCF stretched cluster) carried as primary; Implementation B (N
 
 | ID | Statement | Residual L×I | Status | Owner | Carry into Continue? |
 | --- | --- | :---: | --- | --- | :---: |
-| E-001 | Broadcom pricing volatility | 3 (L3 × I3) | Mitigation in place (Adaptability ≥ 4 sustained; 2nd implementation validated) | A. Lead Architect | Yes |
-| E-002 | ESXi skill concentration | 2 | Cross-training plan in place | Head of Infra Ops | Yes |
+| E-001 | Incumbent vendor pricing volatility | 3 (L3 × I3) | Mitigation in place (Adaptability ≥ 4 sustained; 2nd implementation validated) | A. Lead Architect | Yes |
+| E-002 | Incumbent-platform skill concentration | 2 | Cross-training plan in place | Head of Infra Ops | Yes |
 | E-003 | OJK ITRM revision during engagement | 2 | Designed to best-practice ceiling | Compliance Director | Yes |
 | E-004 | Inter-site fiber outage | 2 | Witness placement (ADR-0015) + runbook | Network Lead | Yes |
 | E-005 | Cyber event during migration | 3 (L2 × I5 originally) | Phased cutover; immutable backups; enhanced monitoring | CISO | Yes |

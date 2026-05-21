@@ -9,7 +9,7 @@
 
 | ID | Statement | Source | Owner | Status | Related ADRs | Pillar tags | Date captured | Last reviewed |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| C-001 | _e.g., Broadcom subscription renewal Q3 2026 triggered displacement evaluation_ | Sponsor interview | _Name_ | Active | | Cost, Adaptability | YYYY-MM-DD | YYYY-MM-DD |
+| C-001 | _e.g., Incumbent platform subscription renewal Q3 2026 triggered displacement evaluation_ | Sponsor interview | _Name_ | Active | | Cost, Adaptability | YYYY-MM-DD | YYYY-MM-DD |
 | C-002 | | | | Active | | | | |
 | C-003 | | | | Active | | | | |
 
@@ -40,7 +40,7 @@
 
 | ID | Statement | Type | Likelihood | Impact | Mitigation plan | Mitigation owner | Residual | Source | Status | Related ADRs | Pillar tags | Date captured | Last reviewed |
 | --- | --- | --- | :---: | :---: | --- | --- | :---: | --- | --- | --- | --- | --- | --- |
-| E-001 | _e.g., Broadcom pricing volatility could increase steady-state OpEx beyond R-003 envelope_ | Risk | 4 | 4 | Maintain Adaptability ≥ 4 to preserve displacement option | _Name_ | 3 | Vendor briefing | Active | | Cost, Adaptability | YYYY-MM-DD | YYYY-MM-DD |
+| E-001 | _e.g., Incumbent vendor pricing volatility could increase steady-state OpEx beyond R-003 envelope_ | Risk | 4 | 4 | Maintain Adaptability ≥ 4 to preserve displacement option | _Name_ | 3 | Vendor briefing | Active | | Cost, Adaptability | YYYY-MM-DD | YYYY-MM-DD |
 | E-002 | | | | | | | | | Active | | | | |
 | E-003 | | | | | | | | | Active | | | | |
 

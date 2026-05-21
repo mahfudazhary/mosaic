@@ -11,7 +11,7 @@ This is the condensed worked-example version. A production register would carry 
 
 | ID | Statement | Source | Owner | Status | Pillar tags |
 | --- | --- | --- | --- | --- | --- |
-| C-001 | Broadcom subscription renewal occurs Q3 2026; the engagement decision must precede renewal commitment by no less than four months | Sponsor interview | A. Lead Architect | Active | Cost, Adaptability |
+| C-001 | Incumbent vendor subscription renewal occurs Q3 2026; the engagement decision must precede renewal commitment by no less than four months | Sponsor interview | A. Lead Architect | Active | Cost, Adaptability |
 | C-002 | CIO is executive sponsor; CISO holds veto on security architecture; COO has delegated continuity sign-off to Head of IT Risk | Charter | A. Lead Architect | Active | — |
 | C-003 | In-scope estate is the core-banking workload in Jakarta and Surabaya. Out-of-scope: subsidiary operations and digital-channel platform (already on a separate stack) | Charter §6 | A. Lead Architect | Active | — |
 
@@ -47,8 +47,8 @@ This is the condensed worked-example version. A production register would carry 
 
 | ID | Statement | Type | L×I | Residual | Mitigation plan | Owner |
 | --- | --- | --- | :---: | :---: | --- | --- |
-| E-001 | Broadcom pricing volatility could increase steady-state OpEx beyond R-003 envelope | Risk | 4×4 | 3 | Maintain Adaptability ≥ 4 to preserve displacement option | A. Lead Architect |
-| E-002 | ESXi-skilled operations staff are concentrated in a single team; departure or unavailability would impact Day-2 capacity | Risk | 3×4 | 2 | Cross-train on selected alternative implementation | Head of Infra Ops |
+| E-001 | Incumbent vendor pricing volatility could increase steady-state OpEx beyond R-003 envelope | Risk | 4×4 | 3 | Maintain Adaptability ≥ 4 to preserve displacement option | A. Lead Architect |
+| E-002 | Operations staff skilled on the current hypervisor are concentrated in a single team; departure or unavailability would impact Day-2 capacity | Risk | 3×4 | 2 | Cross-train on selected alternative implementation | Head of Infra Ops |
 | E-003 | OJK could revise ITRM continuity expectations during the engagement; design must accommodate moderate revision without redesign | Risk | 2×4 | 2 | Design to current best-practice expectations rather than current minimum | Compliance Director |
 | E-004 | Inter-site fiber outage during synchronous replication operation could cause workload pause | Dependency | 2×4 | 2 | Witness placement (ADR-0015); documented failover runbook | Network Lead |
 | E-005 | Cyber event against the management plane during migration window | Threat | 2×5 | 3 | Phased cutover; immutable backups (cyber-recovery pattern); enhanced monitoring | CISO |

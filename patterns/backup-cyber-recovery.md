@@ -31,11 +31,11 @@ The pattern decision is the **immutability and isolation level** of the backup, 
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Veeam | Broad source coverage; immutability options for hardened repos and object storage; cyber-recovery features | Repository design discipline needed | Veeam Backup and Replication docs |
-| Rubrik | Strong cyber-recovery story; appliance model | Commercial; appliance form factor; license cost | Rubrik docs |
-| Cohesity | Hyperconverged backup; broad data services | Appliance scale-out economics | Cohesity docs |
-| Commvault | Mature feature breadth; recent cyber-recovery emphasis (Metallic etc.) | Heavy feature set; admin complexity | Commvault docs |
-| Native cloud backup with immutable storage (AWS Backup + S3 Object Lock; Azure Backup + immutable vaults; GCS Object Versioning) | Cost-efficient at scale; cloud-managed | Sovereignty considerations; full restore performance must be validated | Hyperscaler docs |
+| Backup Vendor 1 | Broad source coverage; immutability options for hardened repos and object storage; cyber-recovery features | Repository design discipline needed | Backup vendor's docs |
+| Backup Vendor 2 | Strong cyber-recovery story; appliance model | Commercial; appliance form factor; license cost | Backup vendor's docs |
+| Backup Vendor 3 | Hyperconverged backup; broad data services | Appliance scale-out economics | Backup vendor's docs |
+| Backup Vendor 4 | Mature feature breadth; recent cyber-recovery emphasis | Heavy feature set; admin complexity | Backup vendor's docs |
+| Hyperscaler-native backup with immutable object storage | Cost-efficient at scale; cloud-managed | Sovereignty considerations; full restore performance must be validated | Hyperscaler docs |
 
 ## 6. Decision criteria
 

@@ -37,12 +37,12 @@ A Kubernetes-based platform for containerized workloads, with the supporting cat
 
 | Implementation | Prerequisites | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Red Hat OpenShift | Red Hat subscription; OpenShift skill on platform team | Most opinionated; broadest enterprise feature parity (incl. Virtualization) | Red Hat OpenShift docs |
-| SUSE Rancher | Rancher subscription | Multi-cluster orchestration strength; lighter built-in feature catalog than OpenShift | SUSE Rancher docs |
-| Vanilla Kubernetes + CNCF tooling (Cilium, Argo, Cert-Manager, etc.) | Strong platform engineering team | Maximum flexibility; highest Day-2 investment | Kubernetes and CNCF project docs |
-| EKS / AKS / GKE managed | Hyperscaler account | Lowest operational overhead; cloud-only (or via hybrid extension) | Hyperscaler docs |
-| VKS (vSphere Kubernetes Service, formerly TKGS) | VCF | Co-located with VM workloads on VCF; Broadcom commercial trajectory should be monitored | VCF documentation |
-| NKP (Nutanix Kubernetes Platform) | Nutanix AOS | Co-located with VM workloads on Nutanix | Nutanix NKP docs |
+| Implementation A — opinionated enterprise Kubernetes distribution | Vendor subscription; distribution-specific skill on platform team | Most opinionated; broadest enterprise feature parity (incl. integrated virtualization) | Vendor's distribution docs |
+| Implementation B — multi-cluster Kubernetes platform | Vendor subscription | Multi-cluster orchestration strength; lighter built-in feature catalog than the opinionated distribution | Vendor's multi-cluster platform docs |
+| Implementation C — vanilla Kubernetes + open-source CNCF tooling | Strong platform engineering team | Maximum flexibility; highest Day-2 investment | Kubernetes and CNCF project docs |
+| Implementation D — managed cloud Kubernetes | Hyperscaler account | Lowest operational overhead; cloud-only (or via hybrid extension) | Hyperscaler docs |
+| Implementation E — incumbent-HCI-bundled Kubernetes | Incumbent HCI platform | Co-located with VM workloads on the incumbent HCI; commercial trajectory of the HCI vendor should be monitored | Incumbent HCI vendor's Kubernetes docs |
+| Implementation F — alternative-HCI-bundled Kubernetes | Alternative HCI platform | Co-located with VM workloads on the alternative HCI | Alternative HCI vendor's Kubernetes docs |
 
 ## 6. Decision criteria
 

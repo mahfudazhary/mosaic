@@ -7,7 +7,7 @@ Two parallel forms are provided so you can work in whichever fits your client:
 | Form | When to use |
 | --- | --- |
 | [`cadre-register.md`](cadre-register.md) | Narrative-heavy engagements; the register lives in the engagement repo and is reviewed in-line |
-| [`cadre-register.csv`](cadre-register.csv) | Spreadsheet-driven engagements; import into Excel/Google Sheets/Smartsheet and round-trip back to CSV |
+| [`cadre-register.csv`](cadre-register.csv) | Spreadsheet-driven engagements; import into any spreadsheet tool and round-trip back to CSV |
 
 The two are **equivalent in schema**. Pick one as the canonical version per engagement and stick with it. Don't try to maintain both in parallel.
 

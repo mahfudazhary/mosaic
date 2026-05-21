@@ -14,7 +14,7 @@ Each Pattern record contains the following sections:
 2. **Applicable contexts** — when this pattern is the right answer (and when it is not).
 3. **Logical structure** — components, relationships, data flows, in vendor-neutral notation.
 4. **Quality-pillar profile** — typical scores when the pattern is implemented competently.
-5. **Implementation matrix** — one entry per validated vendor realization, with version, prerequisites, trade-offs, and reference to vendor canonical documentation.
+5. **Implementation matrix** — one entry per validated realization, with version, prerequisites, trade-offs, and reference to canonical documentation.
 6. **Decision criteria** — the questions whose answers determine which Implementation to choose.
 7. **Anti-patterns** — known failure modes and the conditions that produce them.
 8. **Cross-references** — related patterns and the compliance overlays most affected.
@@ -25,19 +25,19 @@ The following patterns are maintained in the library at the time of this documen
 
 | Pattern | Implementations |
 | --- | --- |
-| [Private Cloud — Hyperconverged](../patterns/private-cloud-hyperconverged.md) | VMware Cloud Foundation; Nutanix AHV; Azure Local (formerly Azure Stack HCI); OpenStack; Proxmox VE; HPE GreenLake Private Cloud. |
-| [Private Cloud — Disaggregated](../patterns/private-cloud-disaggregated.md) | Bare-metal + Ceph + KubeVirt; vSphere + external SAN/NAS; OpenShift Virtualization. |
-| [Hybrid Cloud Extension](../patterns/hybrid-cloud-extension.md) | VCF on AWS/Azure/Google; Nutanix Cloud Clusters (NC2); Azure Local; AWS Outposts; Google Anthos. |
-| [Container Platform](../patterns/container-platform.md) | Red Hat OpenShift; SUSE Rancher; vanilla Kubernetes with CNCF tooling; EKS/AKS/GKE managed. |
-| [Service Mesh](../patterns/service-mesh.md) | Istio; Linkerd; Cilium Service Mesh; OpenShift Service Mesh; AWS App Mesh. |
-| [Disaster Recovery / Business Continuity](../patterns/disaster-recovery-bcp.md) | VMware Live Site Recovery (formerly SRM); Nutanix Protection Policies; Veeam Replication; Zerto; Druva; native cloud DR services. |
-| [Identity and Access Management](../patterns/identity-access-management.md) | Microsoft Entra ID; Okta; Keycloak; FreeIPA; Ping Identity. |
-| [Zero-Trust Network](../patterns/zero-trust-network.md) | VMware NSX; Cisco ACI; Calico Cloud; Cisco Secure Workload (Tetration); Zscaler; Cloudflare Zero Trust; Illumio. |
-| [Data Platform — Lakehouse](../patterns/data-platform-lakehouse.md) | Databricks; Snowflake; Google BigQuery; Cloudera Data Platform; on-premises Trino + Iceberg. |
-| [AI / ML Platform](../patterns/ai-ml-platform.md) | VCF Private AI Foundation with NVIDIA; Red Hat OpenShift AI; NVIDIA AI Enterprise; AWS SageMaker; Google Vertex AI; Azure ML. |
-| [Agentic / LLM Operations](../patterns/agentic-llm-operations.md) | Amazon Bedrock AgentCore (GA Oct 2025); Azure AI Foundry; custom LangGraph or LangChain with vLLM; NVIDIA NIM on-premises. |
-| [Observability Platform](../patterns/observability-platform.md) | Prometheus + Grafana + Loki + Tempo; Datadog; Dynatrace; Splunk; VCF Operations Suite + Aria Operations for Networks. |
-| [Backup and Cyber Recovery](../patterns/backup-cyber-recovery.md) | Veeam; Rubrik; Cohesity; Commvault; native cloud backup with immutable storage. |
+| [Private Cloud — Hyperconverged](../patterns/private-cloud-hyperconverged.md) | Multiple validated implementations (commercial and open-source). |
+| [Private Cloud — Disaggregated](../patterns/private-cloud-disaggregated.md) | Multiple validated implementations (open-source virtualization on commodity storage, traditional hypervisor on external SAN/NAS, container-native virtualization platforms). |
+| [Hybrid Cloud Extension](../patterns/hybrid-cloud-extension.md) | Multiple validated implementations (incumbent stacks extended into public clouds; on-premises appliances from hyperscalers; cross-cloud control planes). |
+| [Container Platform](../patterns/container-platform.md) | Multiple validated implementations (enterprise distributions, multi-cluster managers, vanilla upstream Kubernetes, hyperscaler-managed services). |
+| [Service Mesh](../patterns/service-mesh.md) | Multiple validated implementations (open-source meshes, eBPF-based meshes, vendor-distributed and hyperscaler-native meshes). |
+| [Disaster Recovery / Business Continuity](../patterns/disaster-recovery-bcp.md) | Multiple validated implementations (vendor replication and orchestration suites; third-party data-protection platforms; native cloud DR services). |
+| [Identity and Access Management](../patterns/identity-access-management.md) | Multiple validated implementations (commercial cloud-native identity platforms, open-source identity providers). |
+| [Zero-Trust Network](../patterns/zero-trust-network.md) | Multiple validated implementations (data-center microsegmentation platforms, identity-aware proxies, SASE/ZTNA services, host-based segmentation). |
+| [Data Platform — Lakehouse](../patterns/data-platform-lakehouse.md) | Multiple validated implementations (commercial managed lakehouse services, hyperscaler analytics warehouses, on-premises open-table-format stacks). |
+| [AI / ML Platform](../patterns/ai-ml-platform.md) | Multiple validated implementations (on-premises private-AI stacks, container-platform-based AI distributions, hyperscaler-managed ML services). |
+| [Agentic / LLM Operations](../patterns/agentic-llm-operations.md) | Multiple validated implementations (hyperscaler agent services, vendor AI orchestration platforms, custom open-source agent frameworks with self-hosted inference). |
+| [Observability Platform](../patterns/observability-platform.md) | Multiple validated implementations (open-source metrics/logs/traces stacks, commercial observability SaaS platforms, vendor-integrated operations suites). |
+| [Backup and Cyber Recovery](../patterns/backup-cyber-recovery.md) | Multiple validated implementations (independent data-protection vendors, native cloud backup with immutable storage). |
 
 ## 11.3 Pattern selection procedure
 

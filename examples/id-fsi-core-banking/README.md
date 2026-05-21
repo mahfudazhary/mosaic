@@ -21,7 +21,7 @@ This is a **fictional, anonymized worked example** that illustrates MOSAIC end-t
 | --- | --- |
 | Client | Bank Sejahtera (fictional) |
 | Classification | KBMI 2 commercial bank |
-| Trigger | Broadcom subscription renewal due Q3 2026 |
+| Trigger | Incumbent virtualization vendor subscription renewal due Q3 2026 |
 | Scope | Core-banking estate, Jakarta primary + Surabaya DR |
 | Sponsor | CIO |
 | Veto holders | CISO (security architecture), Head of IT Risk (continuity) |
@@ -30,7 +30,7 @@ This is a **fictional, anonymized worked example** that illustrates MOSAIC end-t
 
 ## The asks
 
-1. Evaluate continuing on VMware versus displacing to an alternative platform.
+1. Evaluate continuing on the incumbent HCI platform versus displacing to an alternative platform.
 2. Design the resulting target architecture.
 3. Build the migration plan.
 
@@ -46,7 +46,7 @@ This is a **fictional, anonymized worked example** that illustrates MOSAIC end-t
 
 ## Outcome summary
 
-The engagement Composed an active-active dual-site HCI design ([ADR-0014](adrs/adr-0014-active-active-hci.md)) with two validated implementations (VCF and Nutanix). Calibrate scored the design at **366/500**, in the recommended target range, with all ID-FSI floors met. The engagement proceeded to Commit; Continue runs through migration delivery and quarterly drift reports for three years.
+The engagement Composed an active-active dual-site HCI design ([ADR-0014](adrs/adr-0014-active-active-hci.md)) with two validated implementations (incumbent HCI stretched cluster and alternative HCI metro-availability variant). Calibrate scored the design at **366/500**, in the recommended target range, with all ID-FSI floors met. The engagement proceeded to Commit; Continue runs through migration delivery and quarterly drift reports for three years.
 
 ## Reading order
 

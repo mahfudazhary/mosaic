@@ -34,13 +34,13 @@ Operability pillar is by definition near-maximum for a competent implementation.
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Prometheus + Grafana + Loki + Tempo (LGTM stack) | Open-source, modular, broad ecosystem | Engineering investment; multi-component operations | Grafana Labs docs |
-| Datadog | Single SaaS platform, strong out-of-box experience | SaaS — sovereignty consideration; cost grows with cardinality | Datadog docs |
-| Dynatrace | Strong APM and AIOps automation | SaaS-first; cost; agent-based default | Dynatrace docs |
-| Splunk | Log analytics depth; broad enterprise install base | Cost at scale; recent Cisco acquisition reshaping commercial offer | Splunk docs |
-| VCF Operations Suite + Aria Operations for Networks | Tight integration with VCF estates | Broadcom commercial trajectory; limited cross-estate visibility | VMware Aria docs |
-| New Relic | Strong APM; consumption-based pricing | SaaS; some sovereignty consideration | New Relic docs |
-| OpenTelemetry-first (vendor-neutral collection) | Portability of telemetry; commit to OTel as the standard | Storage backend(s) still need selection | OpenTelemetry docs |
+| Implementation A — open-source LGTM-style stack | Open-source, modular, broad ecosystem | Engineering investment; multi-component operations | Open-source LGTM-stack project docs |
+| Implementation B — SaaS Observability Vendor 1 | Single SaaS platform, strong out-of-box experience | SaaS — sovereignty consideration; cost grows with cardinality | SaaS observability vendor's docs |
+| Implementation C — SaaS Observability Vendor 2 | Strong APM and AIOps automation | SaaS-first; cost; agent-based default | SaaS observability vendor's docs |
+| Implementation D — SaaS Observability Vendor 3 | Log analytics depth; broad enterprise install base | Cost at scale; recent acquisition reshaping commercial offer | SaaS observability vendor's docs |
+| Implementation E — incumbent-HCI vendor observability suite | Tight integration with incumbent-HCI estates | Incumbent-HCI vendor commercial trajectory; limited cross-estate visibility | Incumbent HCI vendor's observability docs |
+| Implementation F — SaaS Observability Vendor 4 | Strong APM; consumption-based pricing | SaaS; some sovereignty consideration | SaaS observability vendor's docs |
+| Implementation G — OpenTelemetry-first vendor-neutral collection | Portability of telemetry; commit to OTel as the standard | Storage backend(s) still need selection | OpenTelemetry docs |
 
 ## 6. Decision criteria
 

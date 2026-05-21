@@ -62,7 +62,7 @@ Compose is **iterative within itself**. A typical engagement runs two or three C
 
 Each iteration ends with a working-level review with the lead engineers and the client's architecture peers.
 
-Compose draws heavily on the **[Pattern Library](11-pattern-library.md)** at Layer 3 and on vendor reference designs (NVDs, CVDs, VVDs) at Layer 4. The library is the practice's accumulated knowledge of which patterns work in which contexts. Compose's first action on a new engagement is typically a library scan to identify candidate patterns.
+Compose draws heavily on the **[Pattern Library](11-pattern-library.md)** at Layer 3 and on vendor validated-design programs at Layer 4. The library is the practice's accumulated knowledge of which patterns work in which contexts. Compose's first action on a new engagement is typically a library scan to identify candidate patterns.
 
 > **Templates**: [`templates/hld/`](../templates/hld/), [`templates/lld/`](../templates/lld/)
 

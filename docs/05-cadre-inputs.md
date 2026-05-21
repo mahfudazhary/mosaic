@@ -2,7 +2,7 @@
 
 CADRE is MOSAIC's **input model**. It defines five categories of design forces that shape every architectural decision.
 
-The acronym deliberately replaces RACR (the VMware four-element model) with a structure that:
+The acronym deliberately replaces an earlier four-element model (Requirements–Assumptions–Constraints–Risks) with a structure that:
 
 - Surfaces **Context** explicitly.
 - Separates compliance from operational constraints.
@@ -28,7 +28,7 @@ Context establishes the engagement envelope. It is captured during Frame and ref
 
 **Typical Context entries:**
 
-- The primary business driver (e.g., "Broadcom subscription renewal in Q3 2026 triggered displacement evaluation").
+- The primary business driver (e.g., "incumbent-vendor subscription renewal in Q3 2026 triggered displacement evaluation").
 - The executive sponsor and their authority limits.
 - The working-level stakeholders and their decision rights.
 - The geographic and organizational scope.

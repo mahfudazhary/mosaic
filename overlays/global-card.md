@@ -14,7 +14,7 @@ Any architecture that stores, processes, or transmits cardholder data (CHD) or s
 | 1 | Payment Card Industry Data Security Standard | PCI-DSS v4.0.1 | Comprehensive control set across all 12 PCI-DSS requirement areas |
 | 2 | PCI PIN Security | PCI PIN Security Requirements | Specific to PIN handling |
 | 3 | EMV specifications | EMVCo | Chip-card technical interoperability |
-| 4 | Card-scheme operating rules | Visa, Mastercard, AmEx, JCB, UnionPay, Discover | Scheme-specific obligations layered on PCI-DSS |
+| 4 | Card-scheme operating rules | Per scheme-specific operating rules of the major payment-card schemes | Scheme-specific obligations layered on PCI-DSS |
 
 ## 3. Pre-populated Restrictions
 

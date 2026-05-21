@@ -2,17 +2,7 @@
 
 ## 1.1 Why a new framework
 
-Enterprise architects working in heterogeneous environments routinely face a methodology gap. Each major technology vendor publishes its own architecture framework:
-
-- **VMware** — Cloud Foundation Architecture and Design Guide codifies Conceptual–Logical–Physical layering with the RACR input model and AMPRS quality attributes.
-- **Nutanix** — NVD hierarchy with an opinionated full-stack template approach.
-- **AWS / Azure / GCP** — Well-Architected Frameworks with overlapping but non-identical pillar definitions.
-- **The Open Group** — TOGAF: process-rich, vendor-neutral, and heavy.
-- **SABSA** — security architecture in depth.
-- **ISO/IEC 25010** — software quality attributes.
-- **NIST CSF** — cybersecurity outcomes.
-
-Each is internally coherent and externally incompatible. A practice serving clients across vendors must reconcile them constantly. An architect writing an HLD that integrates a VCF private cloud, an AWS landing zone, and an on-premises OpenShift platform cannot use any single vendor's framework without producing an artifact that systematically under-represents the other two stacks.
+Enterprise architects working in heterogeneous environments routinely face a methodology gap. Each major technology vendor publishes its own architecture framework, and each is internally coherent and externally incompatible. A practice serving clients across vendors must reconcile them constantly. An architect writing an HLD that integrates a private cloud on one stack, a public-cloud landing zone on another, and an on-premises container platform on a third cannot use any single vendor's framework without producing an artifact that systematically under-represents the other two stacks.
 
 MOSAIC was developed to close this gap. It is a **synthesis**, not an invention. Every structural element has an antecedent in a recognized framework; the contribution is in the composition, in the explicit additions of Sovereignty and Adaptability as first-class quality pillars, and in the pluggable overlay model that lets the same methodology serve banking, public sector, healthcare, and AI engagements with consistent vocabulary and decision artifacts.
 

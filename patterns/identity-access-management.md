@@ -40,28 +40,28 @@ Centralized identity, authentication, authorization, lifecycle, and audit across
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Microsoft Entra ID | Workforce IAM with M365 estate; broad SaaS federation catalog | Microsoft commercial entanglement; tenant residency considerations for sovereignty-sensitive engagements | Microsoft Entra docs |
-| Okta | Best-of-breed workforce + CIAM | Pure SaaS — sovereignty considerations; commercial premium | Okta docs |
-| Keycloak | Open-source; self-hosted | Engineering investment to operate; full control over data residency | Keycloak docs |
-| FreeIPA | Linux-centric identity for on-prem estates | Limited SaaS federation; aging interfaces | FreeIPA docs |
-| Ping Identity | Enterprise IAM with on-prem option | Commercial; full feature parity with workforce + CIAM | Ping Identity docs |
+| Implementation A — hyperscaler-bundled workforce IAM | Workforce IAM tightly bundled with the hyperscaler's productivity estate; broad SaaS federation catalog | Hyperscaler commercial entanglement; tenant residency considerations for sovereignty-sensitive engagements | Hyperscaler's IAM docs |
+| Implementation B — best-of-breed SaaS workforce IAM | Best-of-breed workforce + CIAM | Pure SaaS — sovereignty considerations; commercial premium | SaaS IAM vendor's docs |
+| Implementation C — open-source self-hosted IAM | Open-source; self-hosted | Engineering investment to operate; full control over data residency | Open-source IAM project docs |
+| Implementation D — Linux-centric open-source IAM | Linux-centric identity for on-prem estates | Limited SaaS federation; aging interfaces | Open-source IAM project docs |
+| Implementation E — enterprise IAM with on-prem option | Enterprise IAM with on-prem option | Commercial; full feature parity with workforce + CIAM | Enterprise IAM vendor's docs |
 
 PAM broker implementations (often paired with the above):
 
 | PAM Implementation | Notes |
 | --- | --- |
-| CyberArk | Most mature; commercial premium |
-| BeyondTrust | Strong in privileged session management |
-| Delinea (formerly Thycotic) | Mid-market sweet spot |
-| HashiCorp Vault | Strong secrets management; PAM features more limited |
-| Teleport | Modern PAM for engineering use cases |
+| PAM Vendor 1 | Most mature; commercial premium |
+| PAM Vendor 2 | Strong in privileged session management |
+| PAM Vendor 3 | Mid-market sweet spot |
+| Secrets-management platform | Strong secrets management; PAM features more limited |
+| Modern PAM for engineering use | Modern PAM for engineering use cases |
 
 ## 6. Decision criteria
 
 - Existing identity store and how much migration is in scope.
 - Sovereignty of identity data (FSI clients often require on-prem or in-jurisdiction identity).
 - SaaS estate to federate.
-- M365 footprint — Entra ID often the default if heavy M365.
+- Productivity-suite footprint — the hyperscaler-bundled workforce IAM is often the default if the productivity estate is heavily on that hyperscaler.
 - PAM scope — broker for engineers only, or also operations / DBAs / vendors.
 
 ## 7. Anti-patterns

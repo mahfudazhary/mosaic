@@ -33,14 +33,14 @@ Three layers, often delivered by different implementations:
 
 | Implementation | Layer covered | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| VMware NSX | Microsegmentation + L4–L7 | Mature on VCF estates; Broadcom commercial trajectory | VMware NSX docs |
-| Cisco ACI | Microsegmentation in data center fabric | Strong hardware-network integration; coupled to Cisco fabric | Cisco ACI docs |
-| Calico Cloud / Calico Enterprise | Container microsegmentation | Kubernetes-native; CNCF lineage | Tigera Calico docs |
-| Cisco Secure Workload (Tetration) | Agent-based microsegmentation | Strong analytics; agent-on-host required | Cisco Secure Workload docs |
-| Zscaler (ZIA + ZPA) | Access brokerage + ZTNA | Pure SaaS; sovereignty consideration; deep SASE feature set | Zscaler docs |
-| Cloudflare Zero Trust | Access brokerage + ZTNA | Cloudflare network; integrated CDN and DDoS posture | Cloudflare Zero Trust docs |
-| Illumio | Agent-based microsegmentation | Strong identity-first model; agent requirement on each protected host | Illumio docs |
-| Cilium (eBPF) | Container microsegmentation | eBPF-native; lower overhead; pairs with [Service Mesh](service-mesh.md) | Cilium docs |
+| Implementation A — incumbent hypervisor-native segmentation | Microsegmentation + L4–L7 | Mature on incumbent-HCI estates; incumbent vendor commercial trajectory | Incumbent hypervisor vendor's segmentation docs |
+| Implementation B — network-fabric segmentation | Microsegmentation in data center fabric | Strong hardware-network integration; coupled to the vendor's fabric | Network-fabric vendor's docs |
+| Implementation C — container-native segmentation | Container microsegmentation | Kubernetes-native; CNCF lineage | Container-native segmentation project docs |
+| Implementation D — agent-based segmentation (network-fabric vendor) | Agent-based microsegmentation | Strong analytics; agent-on-host required | Agent-based segmentation vendor's docs |
+| Implementation E — SaaS ZTNA + SASE (Vendor 1) | Access brokerage + ZTNA | Pure SaaS; sovereignty consideration; deep SASE feature set | SaaS ZTNA/SASE vendor's docs |
+| Implementation F — SaaS ZTNA + SASE (Vendor 2) | Access brokerage + ZTNA | Global edge network; integrated CDN and DDoS posture | SaaS ZTNA/SASE vendor's docs |
+| Implementation G — agent-based segmentation (identity-first) | Agent-based microsegmentation | Strong identity-first model; agent requirement on each protected host | Identity-first segmentation vendor's docs |
+| Implementation H — eBPF segmentation | Container microsegmentation | eBPF-native; lower overhead; pairs with [Service Mesh](service-mesh.md) | eBPF segmentation project docs |
 
 ## 6. Decision criteria
 
