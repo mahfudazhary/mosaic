@@ -1,0 +1,12 @@
+# Engagement scaffold links point at files created only after bootstrap.
+# See engagements/_new-engagement/README.md for context.
+engagement-charter\.md$
+cadre-register\.md$
+^hld\.md$
+^lld\.md$
+^adrs/?$
+quality-scorecard\.md$
+operational-spec\.md$
+drift-reports/?$
+change-requests/?$
+audit-findings/?$
