@@ -2,6 +2,7 @@
 
 > **Code:** HC · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Annually plus on FDA / NHS DSPT releases
 
 ## 1. Applicable context
 

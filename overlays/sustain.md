@@ -2,6 +2,7 @@
 
 > **Code:** SUSTAIN · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Annually aligned with CSRD / ISSB reporting cycles
 
 ## 1. Applicable context
 
@@ -18,12 +19,12 @@ Architectures supporting clients with sustainability disclosure obligations unde
 
 ## 3. Pre-populated Restrictions
 
-| R-ID | Statement | Citation | Waivable |
-| --- | --- | --- | :---: |
-| R-001 | Energy and emissions data for in-scope IT estate collected, attributable to organizational entity, and audit-trail-retained | CSRD / ISSB | No |
-| R-002 | Hardware lifecycle managed with documented refresh policy and e-waste disposition records | CSRD ESRS E5 / local | No |
-| R-003 | Where claimed, renewable-energy attestation supported by RECs, PPAs, or facility-level evidence | GHG Protocol | No |
-| R-004 | Cloud emissions estimated using provider-supplied or independent methodology; documented and consistent | ISSB S2 | No |
+| R-ID | Statement | Subcategory | Citation | Waivable |
+| --- | --- | --- | --- | :---: |
+| R-001 | Energy and emissions data for in-scope IT estate collected, attributable to organizational entity, and audit-trail-retained | Compliance mandate | CSRD / ISSB | No |
+| R-002 | Hardware lifecycle managed with documented refresh policy and e-waste disposition records | Compliance mandate | CSRD ESRS E5 / local | No |
+| R-003 | Where claimed, renewable-energy attestation supported by RECs, PPAs, or facility-level evidence | Compliance mandate | GHG Protocol | No |
+| R-004 | Cloud emissions estimated using provider-supplied or independent methodology; documented and consistent | Compliance mandate | ISSB S2 | No |
 
 ## 4. Pillar floors
 

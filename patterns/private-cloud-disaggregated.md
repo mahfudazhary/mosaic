@@ -51,6 +51,7 @@ A private-cloud pattern in which compute, storage, and networking scale **indepe
 - **Treating open-source distributed storage as a turn-key appliance.** It is a platform that requires platform-engineering investment.
 - **Disaggregating "because we always have"** when workload profile actually fits HCI better.
 - **Allowing storage and compute refresh cycles to diverge so far** that one tier becomes the bottleneck for the other.
+- **Refresh-cycle misalignment between compute and storage tiers** — procurement treats the tiers as fully independent, leaving one tier (typically storage) chronically under-provisioned relative to the other and capping the platform's effective performance.
 
 ## 8. Cross-references
 

@@ -20,13 +20,13 @@ Indonesian central government, ministries, regional governments, and state-owned
 
 ## 3. Pre-populated Restrictions
 
-| R-ID | Statement | Citation | Waivable |
-| --- | --- | --- | :---: |
-| R-001 | Strategic-electronic-system data must reside in Indonesian jurisdiction in an approved facility | PP 71/2019 | No |
-| R-002 | PII residency under UU PDP | UU 27/2022 | Conditional |
-| R-003 | BSSN cybersecurity baseline implemented; incident reporting per BSSN guidance | BSSN | No |
-| R-004 | Komdigi PSE registration completed prior to production go-live | Komdigi regulations | No |
-| R-005 | Procurement, lifecycle, and decommissioning per government IT procurement framework | National IT procurement policy | No |
+| R-ID | Statement | Subcategory | Citation | Waivable |
+| --- | --- | --- | --- | :---: |
+| R-001 | Strategic-electronic-system data must reside in Indonesian jurisdiction in an approved facility | Compliance mandate | PP 71/2019 | No |
+| R-002 | PII residency under UU PDP | Compliance mandate | UU 27/2022 | Conditional |
+| R-003 | BSSN cybersecurity baseline implemented; incident reporting per BSSN guidance | Compliance mandate | BSSN | No |
+| R-004 | Komdigi PSE registration completed prior to production go-live | Compliance mandate | Komdigi regulations | No |
+| R-005 | Procurement, lifecycle, and decommissioning per government IT procurement framework | Compliance mandate | National IT procurement policy | No |
 
 ## 4. Pillar floors
 

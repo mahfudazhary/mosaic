@@ -50,11 +50,11 @@ PAM broker implementations (often paired with the above):
 
 | PAM Implementation | Notes |
 | --- | --- |
-| PAM Vendor 1 | Most mature; commercial premium |
-| PAM Vendor 2 | Strong in privileged session management |
-| PAM Vendor 3 | Mid-market sweet spot |
-| Secrets-management platform | Strong secrets management; PAM features more limited |
-| Modern PAM for engineering use | Modern PAM for engineering use cases |
+| Implementation a — incumbent enterprise PAM (broker + session recording) | Most mature; commercial premium |
+| Implementation b — privileged-session-management leader | Strong in privileged session management |
+| Implementation c — mid-market PAM | Mid-market sweet spot |
+| Implementation d — secrets-management platform with PAM features | Strong secrets management; PAM features more limited |
+| Implementation e — modern engineering-oriented PAM | Modern PAM for engineering use cases |
 
 ## 6. Decision criteria
 

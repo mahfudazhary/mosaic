@@ -12,16 +12,16 @@ Compliance overlays are **pluggable modules** that extend the framework with reg
 
 ## Inventory
 
-| Overlay | Applicable context | Status |
-| --- | --- | --- |
-| [ID-FSI](id-fsi.md) | Indonesia financial services | Active |
-| [ID-GOV](id-gov.md) | Indonesia government and SOE | Active |
-| [ASEAN-FSI](asean-fsi.md) | ASEAN financial services (non-Indonesia) | Active |
-| [GLOBAL-CARD](global-card.md) | Payment-card processing | Active |
-| [EU-FIN](eu-fin.md) | EU financial services and EU-linked operations | Active |
-| [Healthcare (HC)](healthcare.md) | Healthcare and life sciences | Active |
-| [AI](ai.md) | AI and machine-learning workloads | Active |
-| [SUSTAIN](sustain.md) | ESG and sustainability reporting | Active |
+| Overlay | Version | Applicable context | Status |
+| --- | --- | --- | --- |
+| [ID-FSI](id-fsi.md) | 1.1 | Indonesia financial services | Active |
+| [ID-GOV](id-gov.md) | 1.1 | Indonesia government and SOE | Active |
+| [ASEAN-FSI](asean-fsi.md) | 1.1 | ASEAN financial services (non-Indonesia) | Active |
+| [GLOBAL-CARD](global-card.md) | 1.1 | Payment-card processing | Active |
+| [EU-FIN](eu-fin.md) | 1.1 | EU financial services and EU-linked operations | Active |
+| [Healthcare (HC)](healthcare.md) | 1.1 | Healthcare and life sciences | Active |
+| [AI](ai.md) | 1.1 | AI and machine-learning workloads | Active |
+| [SUSTAIN](sustain.md) | 1.1 | ESG and sustainability reporting | Active |
 
 ## Stacking overlays
 

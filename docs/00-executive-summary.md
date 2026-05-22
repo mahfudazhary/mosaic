@@ -6,7 +6,9 @@ It solves a specific problem: every major vendor maintains its own architecture 
 
 ## What MOSAIC provides
 
-- **Three structural axes** — a six-layer abstraction **Spine** (Strategy → Operational), a five-element decision-input model (**CADRE**), and an eight-pillar quality **Lens** covering Availability, Performance, Security, Operability, Cost, Sustainability, Sovereignty, and Adaptability.
+- **Three structural axes** — a six-layer abstraction **Spine** (Strategy → Operational), a five-element decision-input model (**CADRE**), and an eight-pillar quality **Lens** covering Availability, Performance, Security, Operability, Cost, Sustainability, Sovereignty, and Adaptability.[^pillar-names]
+
+[^pillar-names]: Short forms are used here; the compound names ("Availability & Resilience", "Cost & FinOps", etc.) are introduced in [Section 6](06-lens-eight-pillars.md) and used in [Section 9](09-maturity-scoring.md).
 - **A six-phase lifecycle method** — Frame, Capture, Compose, Calibrate, Commit, Continue — that closes the loop from Day-0 design to Day-2 operation and back.
 - **A standardized ADR format** with mandatory traceability to CADRE inputs and quality-pillar impact.
 - **Pluggable compliance overlays** that map regional and sector regulations (OJK, UU PDP, MAS TRM, PCI-DSS, DORA, NIST CSF, ISO 27001) onto the framework without changing its core.

@@ -50,10 +50,10 @@ The **maximum possible fitness score is 500** (level 5 on every pillar × total 
 
 | Score band | Average pillar | Verdict |
 | --- | :---: | --- |
-| **Below 250** | < 2.5 | The design is **not yet ready for Commit**. Multiple pillars are at Reactive or Basic levels; remediation is required before delivery. |
-| **250–325** | 2.5–3.25 | The design is **operationally viable but has visible weaknesses**. Suitable for non-critical workloads; specific pillar gaps should be acknowledged as Exposure entries. |
-| **325–400** | 3.25–4.0 | The **recommended target range** for most enterprise engagements. Mature across most pillars, with optimization in the pillars carrying highest engagement weights. |
-| **Above 400** | > 4.0 | The design is **optimized or innovative across most pillars**. Appropriate where the client genuinely competes on architectural quality; on routine engagements it indicates possible over-engineering. |
+| **< 250** | < 2.5 | The design is **not yet ready for Commit**. Multiple pillars are at Reactive or Basic levels; remediation is required before delivery. |
+| **250–<325** | 2.5–<3.25 | The design is **operationally viable but has visible weaknesses**. Suitable for non-critical workloads; specific pillar gaps should be acknowledged as Exposure entries. |
+| **325–<400** | 3.25–<4.0 | The **recommended target range** for most enterprise engagements. Mature across most pillars, with optimization in the pillars carrying highest engagement weights. |
+| **≥ 400** | ≥ 4.0 | The design is **optimized or innovative across most pillars**. Appropriate where the client genuinely competes on architectural quality; on routine engagements it indicates possible over-engineering. |
 
 ## 9.4 Scoring mechanics
 

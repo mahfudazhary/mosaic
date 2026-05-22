@@ -4,6 +4,7 @@
 > **Lead architect:** A. Lead Architect · **Overlays loaded:** ID-FSI v1.1
 
 This is the condensed worked-example version. A production register would carry 30–60 entries across the five elements.
+Elides Source/Owner/Status/Date-captured/Last-reviewed/Related-ADRs columns (in various combinations across the five element tables) for brevity; the full template schema is in `templates/cadre-register/cadre-register.md`.
 
 ---
 

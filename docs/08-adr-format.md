@@ -11,14 +11,14 @@ ADRs are typically authored at the Logical and Physical layers; Strategy and Con
 | **ID** | `ADR-NNNN`, sequential within the engagement |
 | **Title** | Short imperative statement ("Use overlay networking for east-west traffic") |
 | **Status** | `Proposed` \| `Accepted` \| `Superseded by ADR-XXXX` \| `Deprecated` |
-| **Layer** | `L1` \| `L2` \| `L3` \| `L4` \| `L5` |
+| **Layer** | `L1` \| `L2` \| `L3` \| `L4` \| `L5`. L0 (Strategy) decisions are captured in the engagement charter rather than as ADRs (see Principle 3). |
 | **Date** | ISO-formatted date of decision |
 | **Authors** | Named individuals who produced the decision |
 | **Reviewers** | Named individuals who reviewed and concurred |
 | **CADRE Trace** | References to Context, Assumptions, Demands, Restrictions, Exposure entries this decision relies on or affects |
 | **Problem** | Two to three sentences describing what is being decided and why |
 | **Options Considered** | Each option summarized with its essential trade-off (typically two to four options) |
-| **Quality Impact** | Delta against status quo for each of the eight pillars, scored on a five-point scale |
+| **Quality Impact** | Delta against status quo for each of the eight pillars, scored as a delta from the status quo on an −5..+5 scale (where 0 = no change) |
 | **Decision** | The chosen option, with reasoning that links it to the CADRE Trace and Quality Impact |
 | **Consequences** | Positive and negative consequences, plus follow-up actions with owners |
 | **Validation** | Success measure (how the team will know the decision worked) and review trigger (event or date that forces re-evaluation) |

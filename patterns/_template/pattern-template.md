@@ -38,11 +38,11 @@ Indicative scores; actual scores depend on Implementation and engagement specifi
 
 ## 5. Implementation matrix
 
-Each row is a validated vendor realization at L4.
+Each row is a validated vendor realization at L4. The second column may be renamed to fit the pattern's nature (e.g., "Layer covered" for layered patterns, "Sub-shape supported" for variant-rich patterns).
 
-| Implementation | Version (as of <date>) | Prerequisites | Trade-offs | Canonical doc |
-| --- | --- | --- | --- | --- |
-| | | | | |
+| Implementation | Strength / Layer / Sub-shape | Trade-offs | Canonical doc |
+| --- | --- | --- | --- |
+| | | | |
 
 ## 6. Decision criteria — choosing an Implementation
 

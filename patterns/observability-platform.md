@@ -37,7 +37,7 @@ Operability pillar is by definition near-maximum for a competent implementation.
 | Implementation A — open-source LGTM-style stack | Open-source, modular, broad ecosystem | Engineering investment; multi-component operations | Open-source LGTM-stack project docs |
 | Implementation B — SaaS Observability Vendor 1 | Single SaaS platform, strong out-of-box experience | SaaS — sovereignty consideration; cost grows with cardinality | SaaS observability vendor's docs |
 | Implementation C — SaaS Observability Vendor 2 | Strong APM and AIOps automation | SaaS-first; cost; agent-based default | SaaS observability vendor's docs |
-| Implementation D — SaaS Observability Vendor 3 | Log analytics depth; broad enterprise install base | Cost at scale; recent acquisition reshaping commercial offer | SaaS observability vendor's docs |
+| Implementation D — SaaS Observability Vendor 3 | Log analytics depth; broad enterprise install base | Cost at scale; commercial offer evolving under M&A activity | SaaS observability vendor's docs |
 | Implementation E — incumbent-HCI vendor observability suite | Tight integration with incumbent-HCI estates | Incumbent-HCI vendor commercial trajectory; limited cross-estate visibility | Incumbent HCI vendor's observability docs |
 | Implementation F — SaaS Observability Vendor 4 | Strong APM; consumption-based pricing | SaaS; some sovereignty consideration | SaaS observability vendor's docs |
 | Implementation G — OpenTelemetry-first vendor-neutral collection | Portability of telemetry; commit to OTel as the standard | Storage backend(s) still need selection | OpenTelemetry docs |

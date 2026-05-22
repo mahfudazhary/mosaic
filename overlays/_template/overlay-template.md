@@ -18,7 +18,7 @@ Numbered list of regulatory clauses, each cited to source, with a one-sentence s
 
 ## 3. Pre-populated Restrictions
 
-Ready-to-load R-register entries. Load these into the engagement [CADRE register](../../templates/cadre-register/cadre-register.md) at Capture. Mark each as applicable or `Not applicable — <reason>`.
+Ready-to-load R-register entries. Load these into the engagement [CADRE register](../templates/cadre-register/cadre-register.md) at Capture. Mark each as applicable or `Not applicable — <reason>`.
 
 | R-ID | Statement | Subcategory | Citation | Waivable |
 | --- | --- | --- | --- | :---: |

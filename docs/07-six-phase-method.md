@@ -109,7 +109,7 @@ Continue is the phase that distinguishes MOSAIC from project-bounded architectur
 
 ## 7.3 Phase cadence variations
 
-Not every engagement runs all six phases at full depth. Three common variations:
+Not every engagement runs all six phases at full depth. Common engagement shapes:
 
 | Variation | Phases run | Typical duration |
 | --- | --- | --- |

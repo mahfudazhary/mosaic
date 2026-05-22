@@ -2,6 +2,7 @@
 
 > **Code:** ASEAN-FSI · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Semi-annually (covers multiple jurisdictions with independent rule-making cycles)
 
 ## 1. Applicable context
 
@@ -16,21 +17,21 @@ ASEAN financial-services institutions outside Indonesia. Covers Singapore (MAS),
 | 3 | IT Risk Management Framework | BSP Circular 982 | Philippines | IT governance and risk; technology outsourcing |
 | 4 | Cybersecurity Risk Management | BSP Circular 1019 | Philippines | Cybersecurity-specific controls |
 | 5 | IT Risk Regulations | Bank of Thailand (BOT) IT Risk Notification | Thailand | IT risk governance and reporting |
-| 6 | Data Protection | PDPA Singapore; PDPA Malaysia; Data Privacy Act Philippines; PDPA Thailand | Jurisdiction-specific | Personal data residency and handling vary by jurisdiction |
+| 6 | Data Protection | PDPA Singapore; PDPA Malaysia; Data Privacy Act (Republic Act 10173, Philippines); PDPA Thailand | Jurisdiction-specific | Personal data residency and handling vary by jurisdiction |
 
 ## 3. Pre-populated Restrictions
 
 Per-jurisdiction R-restrictions; load the row(s) matching the engagement's jurisdiction.
 
-| R-ID | Statement | Citation | Waivable |
-| --- | --- | --- | :---: |
-| R-001 (SG) | Material cloud / technology outsourcing arrangements documented and notified to MAS where applicable; risk assessment completed prior to contract | MAS TRM | Conditional |
-| R-002 (SG) | Personal data handled per PDPA Singapore | PDPA Singapore | Conditional |
-| R-003 (MY) | RMiT-aligned IT risk governance with documented controls; cloud risk assessment | BNM RMiT | No |
-| R-004 (MY) | Personal data handled per Malaysia PDPA | PDPA Malaysia | Conditional |
-| R-005 (PH) | IT outsourcing per BSP Circular 982; cybersecurity controls per Circular 1019 | BSP | No |
-| R-006 (PH) | Personal data handled per Philippines DPA | DPA Philippines | Conditional |
-| R-007 (TH) | IT risk governance and reporting per BOT IT Risk Notification | BOT | No |
+| R-ID | Statement | Subcategory | Citation | Waivable |
+| --- | --- | --- | --- | :---: |
+| R-001 (SG) | Material cloud / technology outsourcing arrangements documented and notified to MAS where applicable; risk assessment completed prior to contract | Compliance mandate | MAS TRM | Conditional |
+| R-002 (SG) | Personal data handled per PDPA Singapore | Compliance mandate | PDPA Singapore | Conditional |
+| R-003 (MY) | RMiT-aligned IT risk governance with documented controls; cloud risk assessment | Compliance mandate | BNM RMiT | No |
+| R-004 (MY) | Personal data handled per Malaysia PDPA | Compliance mandate | PDPA Malaysia | Conditional |
+| R-005 (PH) | IT outsourcing per BSP Circular 982; cybersecurity controls per Circular 1019 | Compliance mandate | BSP | No |
+| R-006 (PH) | Personal data handled per Philippines DPA | Compliance mandate | DPA (Philippines) | Conditional |
+| R-007 (TH) | IT risk governance and reporting per BOT IT Risk Notification | Compliance mandate | BOT | No |
 
 ## 4. Pillar floors
 

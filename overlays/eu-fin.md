@@ -2,6 +2,7 @@
 
 > **Code:** EU-FIN · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Quarterly (DORA + NIS2 + MiCA implementation guidance evolving)
 
 ## 1. Applicable context
 
@@ -19,15 +20,15 @@ EU financial-services institutions and EU-linked operations of non-EU firms. App
 
 ## 3. Pre-populated Restrictions
 
-| R-ID | Statement | Citation | Waivable |
-| --- | --- | --- | :---: |
-| R-001 | DORA ICT risk management framework documented, with periodic review and senior-management ownership | DORA Article 6 | No |
-| R-002 | Critical or important functions covered by Business Impact Analysis with documented recovery objectives | DORA Article 11 | No |
-| R-003 | Threat-led penetration testing (TLPT) every 3 years for in-scope entities | DORA Article 26 | No |
-| R-004 | ICT-related incident classification and reporting per DORA timelines | DORA Article 19 | No |
-| R-005 | Register of ICT third-party arrangements; pre-contractual due diligence; exit strategies | DORA Articles 28-30 | No |
-| R-006 | Personal data subject to GDPR — lawful basis, DPIA where required, international transfer mechanism (SCC, adequacy decision) | GDPR | Conditional |
-| R-007 | NIS2 cybersecurity baseline implemented where in-scope | NIS2 | No |
+| R-ID | Statement | Subcategory | Citation | Waivable |
+| --- | --- | --- | --- | :---: |
+| R-001 | DORA ICT risk management framework documented, with periodic review and senior-management ownership | Compliance mandate | DORA Article 6 | No |
+| R-002 | Critical or important functions covered by Business Impact Analysis with documented recovery objectives | Compliance mandate | DORA Article 11 | No |
+| R-003 | Threat-led penetration testing (TLPT) every 3 years for in-scope entities | Compliance mandate | DORA Article 26 | No |
+| R-004 | ICT-related incident classification and reporting per DORA timelines | Compliance mandate | DORA Article 19 | No |
+| R-005 | Register of ICT third-party arrangements; pre-contractual due diligence; exit strategies | Compliance mandate | DORA Articles 28-30 | No |
+| R-006 | Personal data subject to GDPR — lawful basis, DPIA where required, international transfer mechanism (SCC, adequacy decision) | Compliance mandate | GDPR | Conditional |
+| R-007 | NIS2 cybersecurity baseline implemented where in-scope | Compliance mandate | NIS2 | No |
 
 ## 4. Pillar floors
 
