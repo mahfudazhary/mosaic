@@ -12,9 +12,9 @@
 
 ## CADRE Trace
 
-- **Context:** C-001 (incumbent vendor subscription renewal Q3 2026), C-003 (Sponsor: CIO; CISO veto on security architecture; Head of IT Risk holds continuity sign-off).
+- **Context:** C-001 (incumbent vendor subscription renewal Q3 2026), C-002 (Sponsor: CIO; CISO veto on security architecture; Head of IT Risk holds continuity sign-off).
 - **Demands:** D-001 (RPO ≤ 15 min for tier-1), D-002 (RTO ≤ 1 hour for tier-1), D-003 (sustained 50k concurrent sessions), D-005 (unified VM + container platform).
-- **Restrictions:** R-001 (POJK 11/2022 IT continuity), R-002 (UU PDP onshore PII residency), R-004 (Surabaya facility must be reused), R-005 (single-vendor lock-in unacceptable).
+- **Restrictions:** R-001 (POJK 11/2022 IT continuity), R-002 (UU PDP onshore PII residency), R-003 (budget envelope), R-004 (Surabaya facility must be reused), R-005 (single-vendor lock-in unacceptable).
 - **Exposure:** E-001 (incumbent vendor pricing volatility), E-002 (incumbent-platform skill-pool concentration), E-003 (OJK ITRM revision during engagement), E-004 (inter-site fiber outage).
 
 ## Problem
@@ -65,7 +65,7 @@ The implementation selection between the incumbent HCI and the alternative HCI i
 | Action | Owner | Target date |
 | --- | --- | --- |
 | Witness placement decision (ADR-0015) | A. Lead Architect | 2026-04-30 |
-| Implementation selection ADR (Implementation A vs Implementation B primary) (ADR-0014b) | A. Lead Architect | 2026-05-08 |
+| Implementation selection ADR (Implementation A vs Implementation B primary) (ADR-0014b) (not included in this condensed example — see L4 LLD) | A. Lead Architect | 2026-05-08 |
 | Inter-site network upgrade ADR (ADR-0017) | Pak Joko, Network Lead | 2026-05-15 |
 | Cross-site failover runbook draft | Bu Rina, Head of Infra Ops | 2026-06-15 |
 | Operator training plan (both implementations) | Bu Rina | 2026-06-30 |

@@ -39,7 +39,7 @@ Implementation A — Incumbent HCI (stretched cluster) carried as primary; Imple
 | :-: | --- | --- | :---: | --- | --- | --- |
 | 1 | No chaos-testing programme; Availability ceiling 4 | D-001, D-002 | Low | Add chaos-testing item to year-2 roadmap | Head of IT Risk | 2027-Q1 |
 | 2 | Supply-chain attestation incomplete; Security ceiling 4 | R-001 | Medium | Adopt SBOM ingestion + vendor attestation review by year 1 close | CISO delegate | 2026-Q4 |
-| 3 | No cost-attribution to business units; Cost ceiling 3 | D-006-derived | Medium | Implement FinOps tagging and showback within 6 months of go-live | CFO delegate | 2027-Q1 |
+| 3 | No cost-attribution to business units; Cost ceiling 3 | R-003 / Cost pillar | Medium | Implement FinOps tagging and showback within 6 months of go-live | CFO delegate | 2027-Q1 |
 | 4 | ESG reporting integration not yet built; Sustainability ceiling 3 | (none mandatory under current scope) | Low | Add to year-2 roadmap | ESG lead | 2027-Q2 |
 | 5 | Storage-policy specifics reduce data-portability score | R-005 | Low | Document portability runbook for storage policy at L5 | Storage Lead | Pre-Commit |
 
@@ -59,7 +59,7 @@ Implementation A — Incumbent HCI (stretched cluster) carried as primary; Imple
 | --- | --- | --- | --- |
 | Lead architect | A. Lead Architect | 2026-05-22 | _signed_ |
 | Practice partner | C. Partner | 2026-05-22 | _signed_ |
-| Client architecture lead | (delegate of CIO) | 2026-05-23 | _signed_ |
+| Client architecture lead | Pak Tono, Head of Architecture (delegate of CIO) | 2026-05-23 | _signed_ |
 | Executive sponsor | Ibu Sari, CIO | 2026-05-23 | _signed (escalation: gap #2 noted)_ |
 
 ---

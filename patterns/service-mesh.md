@@ -55,7 +55,10 @@ Performance is contextual — proxy-based meshes add ~1–3ms p99; eBPF meshes a
 - **Adopting a mesh for a small estate** — operational overhead exceeds value.
 - **Running multiple meshes in one cluster** — conflicting webhooks and telemetry pipelines.
 - **Conflating mesh with API gateway** — both serve traffic, but the boundaries and ownership differ.
+- **Adopting a mesh because Kubernetes is "incomplete without it"** — operational cost ignored; the mesh becomes a permanent platform-engineering tax with no commensurate security or traffic-management benefit.
 
 ## 8. Cross-references
 
 **Related patterns:** [Container Platform](container-platform.md), [Zero-Trust Network](zero-trust-network.md), [Observability Platform](observability-platform.md).
+
+**Compliance overlays most affected:** [ID-FSI](../overlays/id-fsi.md) (audit + segmentation), [EU-FIN](../overlays/eu-fin.md) (DORA), [AI](../overlays/ai.md) (when the mesh fronts AI/agentic traffic).

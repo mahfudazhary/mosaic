@@ -31,11 +31,11 @@ The pattern decision is the **immutability and isolation level** of the backup, 
 
 | Implementation | Strength | Trade-offs | Canonical doc |
 | --- | --- | --- | --- |
-| Backup Vendor 1 | Broad source coverage; immutability options for hardened repos and object storage; cyber-recovery features | Repository design discipline needed | Backup vendor's docs |
-| Backup Vendor 2 | Strong cyber-recovery story; appliance model | Commercial; appliance form factor; license cost | Backup vendor's docs |
-| Backup Vendor 3 | Hyperconverged backup; broad data services | Appliance scale-out economics | Backup vendor's docs |
-| Backup Vendor 4 | Mature feature breadth; recent cyber-recovery emphasis | Heavy feature set; admin complexity | Backup vendor's docs |
-| Hyperscaler-native backup with immutable object storage | Cost-efficient at scale; cloud-managed | Sovereignty considerations; full restore performance must be validated | Hyperscaler docs |
+| Implementation A — incumbent enterprise backup (with immutability) | Broad source coverage; immutability options for hardened repos and object storage; cyber-recovery features | Repository design discipline needed | Backup vendor's docs |
+| Implementation B — next-generation backup-and-recovery platform | Strong cyber-recovery story; appliance model | Commercial; appliance form factor; license cost | Backup vendor's docs |
+| Implementation C — hyperconverged-style backup platform | Hyperconverged backup; broad data services | Appliance scale-out economics | Backup vendor's docs |
+| Implementation D — long-established backup suite | Mature feature breadth; recent cyber-recovery emphasis | Heavy feature set; admin complexity | Backup vendor's docs |
+| Implementation E — hyperscaler-native backup with immutable object storage | Cost-efficient at scale; cloud-managed | Sovereignty considerations; full restore performance must be validated | Hyperscaler docs |
 
 ## 6. Decision criteria
 

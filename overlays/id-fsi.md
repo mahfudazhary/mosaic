@@ -28,7 +28,7 @@ Load into the engagement [CADRE register](../templates/cadre-register/cadre-regi
 
 | R-ID | Statement | Subcategory | Citation | Waivable |
 | --- | --- | --- | --- | :---: |
-| R-001 | Tier-1 services must satisfy documented RPO ≤ 15 min, RTO ≤ 1 hr, with annual DR test report submitted to OJK | Compliance mandate | POJK 11/2022 | No |
+| R-001 | Tier-1 services must have documented RPO/RTO commensurate with the service-tier classification (Tier-1 services typically RPO ≤ 15 min, RTO ≤ 1 hr per supervisory expectation), with annual DR test report submitted to OJK | Compliance mandate | POJK 11/2022 | No |
 | R-002 | All PII data flows of Indonesian data subjects must terminate in Indonesian jurisdiction; cross-border processing requires regulator notification or explicit subject consent | Compliance mandate | UU 27/2022 PDP | Conditional |
 | R-003 | Material third-party / cloud arrangements require completed risk assessment, contract review, and pre-implementation OJK notification | Compliance mandate | POJK 11/2022 IT outsourcing | No |
 | R-004 | Electronic system operator registration with Komdigi required for in-scope systems | Compliance mandate | PP 71/2019 | No |

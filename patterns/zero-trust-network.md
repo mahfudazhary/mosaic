@@ -15,6 +15,11 @@ Identity-aware segmentation and encryption across the estate, replacing perimete
 - Regulatory requirements demand encryption-in-transit between segments (PCI, HIPAA, financial regulators).
 - The estate spans on-prem, multi-cloud, and SaaS — perimeter-based security cannot apply uniformly.
 
+**Do not use this pattern when:**
+- The estate is a very simple flat network with no compliance pressure and no realistic east-west threat — the policy overhead is disproportionate.
+- The estate is already segmented sufficiently at L4 firewalls and the residual risk does not justify another control plane.
+- The operating model is trust-by-default and the organization is not prepared to change it — the pattern will be adopted in name only and provide no real protection.
+
 ## 3. Logical structure
 
 Three layers, often delivered by different implementations:

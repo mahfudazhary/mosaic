@@ -54,10 +54,11 @@ A unified data platform combining lake-scale storage with warehouse-style query 
 - **Lakehouse as buzzword** — file dump with no catalog, no schema discipline, no governance.
 - **Tight coupling to one query engine's proprietary features** when the platform was sold as open.
 - **Re-implementing ETL** for every consumer rather than treating curated data as a product.
+- **Forcing transactional workloads onto the lakehouse table format** — write-amplification dominates and the lakehouse becomes a poor substitute for an OLTP store.
 
 
 ## 8. Cross-references
 
 **Related patterns:** [AI / ML Platform](ai-ml-platform.md), [Container Platform](container-platform.md), [Observability Platform](observability-platform.md).
 
-**Compliance overlays most affected:** [ID-FSI](../overlays/id-fsi.md), [EU-FIN](../overlays/eu-fin.md), [HC](../overlays/healthcare.md).
+**Compliance overlays most affected:** [ID-FSI](../overlays/id-fsi.md), [EU-FIN](../overlays/eu-fin.md), [HC](../overlays/healthcare.md), [AI](../overlays/ai.md).

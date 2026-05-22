@@ -2,6 +2,7 @@
 
 > **Code:** AI · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Quarterly (rapid regulatory motion under EU AI Act, NIST AI RMF, MAS FEAT)
 
 ## 1. Applicable context
 
@@ -14,7 +15,7 @@ Architectures that train, fine-tune, or operate AI/ML models — including gener
 | 1 | NIST AI Risk Management Framework | NIST AI RMF 1.0 + Generative AI Profile | Voluntary but increasingly referenced; map, measure, manage, govern |
 | 2 | EU AI Act | EU Regulation 2024/1689 | Risk-tiered obligations: prohibited, high-risk, limited, minimal; specific GPAI obligations |
 | 3 | AI management systems | ISO/IEC 42001:2023 | Formal AI management system standard |
-| 4 | Sector-specific AI guidelines | OJK (ID-FSI), MAS FEAT (Singapore), FDA on AI/ML SaMD, etc. | Sector-conditioned obligations |
+| 4 | Sector-specific AI guidelines | OJK (ID-FSI), MAS FEAT (Fairness, Ethics, Accountability, Transparency) (Singapore), FDA on AI/ML SaMD, etc. | Sector-conditioned obligations |
 | 5 | Algorithmic decision-making | GDPR Article 22; sectoral fairness rules | Right against solely automated decisions; explainability |
 
 ## 3. Pre-populated Restrictions

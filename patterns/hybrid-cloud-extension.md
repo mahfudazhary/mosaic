@@ -59,6 +59,7 @@ Sovereignty score is highly contextual — onshore-only requirements may rule ou
 - **Hybrid as a hedge** — adopting a hybrid pattern because the client cannot decide on a direction. Produces two operational surfaces and the cost of both. Better to pick a direction and treat hybrid as transitional.
 - **Asymmetric capabilities** — applications written assuming on-prem performance fail in cloud, or vice-versa.
 - **Ignoring egress economics** — cloud-leg storage that frequently sends data back on-prem can exhaust budget faster than any other line item.
+- **Treating the cloud-leg as DR without rehearsing the failover** — the extension is assumed to be a recovery target but failover paths, identity bridges, and data-plane warmth are never exercised; the first real attempt fails.
 
 ## 8. Cross-references
 

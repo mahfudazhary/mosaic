@@ -2,6 +2,7 @@
 
 > **Code:** GLOBAL-CARD · **Version:** 1.1 · **Status:** Active
 > **Owner:** Practice Compliance Lead · **Last reviewed:** 2026-05
+> **Source review cadence:** Annually with PCI-DSS version checkpoints
 
 ## 1. Applicable context
 

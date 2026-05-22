@@ -66,7 +66,9 @@ A modern dual-site active-active architecture will reduce business-continuity ri
 
 | Overlay | Version applied | Notes |
 | --- | --- | --- |
-| ID-FSI | 1.1 (May 2026) | All POJK 11/2022 and UU PDP restrictions in scope; BIFast cited as dependency, not in-scope build |
+| ID-FSI | 1.1[^overlay-ver] | All POJK 11/2022 and UU PDP restrictions in scope; BIFast cited as dependency, not in-scope build |
+
+[^overlay-ver]: This worked example uses the ID-FSI overlay version current at the time of writing; the version-as-of date is omitted here to avoid implying a release date later than charter sign-off.
 
 ## 8. Pillar weights (sum = 100)
 
