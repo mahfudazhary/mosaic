@@ -82,7 +82,9 @@
     justify-content: space-between;
     padding: 0 16px;
     pointer-events: none;
+    z-index: 5;
   }
+  .overlay { z-index: 20; }
   #mobileCtl .group { display: flex; gap: 12px; pointer-events: auto; }
   #mobileCtl button {
     margin: 0;
@@ -95,7 +97,7 @@
     color: #222;
   }
   #mobileCtl .throw { width: 78px; height: 78px; background: #ffce3a; color:#4a2a00; }
-  @media (pointer: coarse) { #mobileCtl { display: flex; } }
+  @media (pointer: coarse) { #mobileCtl.show { display: flex; } }
 </style>
 </head>
 <body>
@@ -205,8 +207,20 @@
   bindBtn('btnLeft','left'); bindBtn('btnRight','right');
   bindBtn('btnJump','jump'); bindBtn('btnThrow','throw');
 
-  document.getElementById('startBtn').onclick = startGame;
-  document.getElementById('retryBtn').onclick = startGame;
+  const mobileCtl = document.getElementById('mobileCtl');
+
+  // Tombol mulai/ulang: respons klik dan sentuhan (HP)
+  function tapBtn(id, fn) {
+    const el = document.getElementById(id);
+    let handled = false;
+    el.addEventListener('touchend', e => {
+      e.preventDefault(); handled = true; fn();
+      setTimeout(() => handled = false, 400);
+    }, {passive:false});
+    el.addEventListener('click', () => { if (!handled) fn(); });
+  }
+  tapBtn('startBtn', startGame);
+  tapBtn('retryBtn', startGame);
 
   // ---------- Game flow ----------
   function startGame() {
@@ -219,12 +233,14 @@
     startScreen.classList.add('hidden');
     overScreen.classList.add('hidden');
     hud.classList.remove('hidden');
+    mobileCtl.classList.add('show');
     updateHud();
   }
 
   function gameOver() {
     state = 'over';
     hud.classList.add('hidden');
+    mobileCtl.classList.remove('show');
     finalScoreEl.textContent = score;
     overTitle.textContent = lives <= 0 ? '🐵 Kewalahan!' : 'Selesai';
     overMsg.textContent = score >= 200
