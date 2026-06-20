@@ -139,7 +139,7 @@
   <div id="startScreen" class="overlay">
     <h1>🧕 Ibu Berjilbab vs Monyet 🐵</h1>
     <p>Para ibu berjilbab hitam diserbu gerombolan monyet nakal!
-       Bantu Bu Siti <b>menghindar</b> dari monyet dan <b>melempar pisang</b> untuk mengusir mereka.</p>
+       Bantu Ibu Emi <b>menghindar</b> dari monyet dan <b>melempar pisang</b> untuk mengusir mereka.</p>
     <div class="keys">
       ⌨️ <b>← →</b> jalan &nbsp;•&nbsp; <b>↑ / Spasi</b> lompat (menghindar) &nbsp;•&nbsp; <b>F / Enter</b> lempar pisang<br>
       📱 Di HP gunakan tombol di bawah layar
@@ -226,7 +226,7 @@
   let invuln = 0;
   let lastTime = 0;
 
-  // Player (Bu Siti)
+  // Player (Ibu Emi)
   const player = {
     x: 130, y: GROUND, w: 40, h: 74,
     vx: 0, vy: 0,
@@ -308,7 +308,7 @@
     finalScoreEl.textContent = score;
     overTitle.textContent = lives <= 0 ? '🐵 Kewalahan!' : 'Selesai';
     overMsg.textContent = score >= 200
-      ? 'Luar biasa! Bu Siti pendekar pengusir monyet sejati! 🏆'
+      ? 'Luar biasa! Ibu Emi pendekar pengusir monyet sejati! 🏆'
       : 'Monyet-monyet itu nakal sekali. Coba lagi ya, Bu!';
     overScreen.classList.remove('hidden');
   }
