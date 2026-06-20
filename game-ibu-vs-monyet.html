@@ -2,46 +2,56 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1b2a1b">
 <title>Ibu Berjilbab vs Monyet</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     height: 100%;
+    width: 100%;
     background: #1b2a1b;
     font-family: "Segoe UI", Tahoma, sans-serif;
     color: #fff;
     overflow: hidden;
+    position: fixed;
+    inset: 0;
+    overscroll-behavior: none;
+    touch-action: none;
     user-select: none;
     -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
   #wrap {
-    position: relative;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   canvas {
     background: linear-gradient(#bfe6ff 0%, #d9f3d0 55%, #8ec96a 100%);
     display: block;
-    max-width: 100%;
-    max-height: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     touch-action: none;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.5);
   }
   #hud {
     position: absolute;
-    top: 12px; left: 0; right: 0;
+    top: calc(10px + env(safe-area-inset-top));
+    left: 0; right: 0;
     display: flex;
     justify-content: space-between;
-    padding: 0 18px;
-    font-size: 18px;
+    padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left));
+    font-size: clamp(15px, 4vw, 20px);
     font-weight: 700;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
     pointer-events: none;
+    z-index: 10;
   }
   #hud .hearts { color: #ff5b6e; }
   .overlay {
@@ -77,14 +87,30 @@
   .hidden { display: none; }
   #mobileCtl {
     position: absolute;
-    bottom: 14px; left: 0; right: 0;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: 0; right: 0;
     display: none;
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 calc(18px + env(safe-area-inset-right)) 0 calc(18px + env(safe-area-inset-left));
     pointer-events: none;
     z-index: 5;
   }
   .overlay { z-index: 20; }
+  #rotate {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #14210f;
+    text-align: center;
+    padding: 24px;
+  }
+  #rotate .icon { font-size: 64px; animation: rot 1.6s ease-in-out infinite; }
+  #rotate p { margin-top: 14px; font-size: 18px; max-width: 320px; line-height: 1.5; }
+  @keyframes rot { 0%,40%{transform:rotate(0)} 60%,100%{transform:rotate(-90deg)} }
   #mobileCtl .group { display: flex; gap: 12px; pointer-events: auto; }
   #mobileCtl button {
     margin: 0;
@@ -128,6 +154,11 @@
     <button id="retryBtn">MAIN LAGI</button>
   </div>
 
+  <div id="rotate">
+    <div class="icon">📱</div>
+    <p>Putar HP ke posisi <b>mendatar (landscape)</b> agar lebih seru.<br>Ketuk untuk tetap main.</p>
+  </div>
+
   <div id="mobileCtl">
     <div class="group">
       <button id="btnLeft">◀</button>
@@ -144,8 +175,33 @@
 (function () {
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const GROUND = H - 60;
+  // Ukuran main dinamis (CSS px). Diisi oleh resizeCanvas().
+  let W = 800, H = 450, GROUND = H - 60, dpr = 1;
+
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const cssW = Math.max(280, window.innerWidth);
+    const cssH = Math.max(280, window.innerHeight);
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // gambar dalam satuan CSS px
+    W = cssW;
+    H = cssH;
+    GROUND = H - Math.max(54, Math.min(H * 0.16, 90));
+    // jaga pemain tetap di dalam layar saat berubah ukuran
+    if (player) {
+      player.x = Math.max(22, Math.min(W - 22, player.x));
+      if (player.onGround) player.y = GROUND;
+    }
+    updateRotateHint();
+  }
+
+  function updateRotateHint() {
+    const portrait = H > W;
+    const small = Math.min(W, H) < 520;
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    rotateEl.style.display = (portrait && small && coarse && !rotateDismissed) ? 'flex' : 'none';
+  }
 
   // UI refs
   const hud = document.getElementById('hud');
@@ -157,6 +213,10 @@
   const overTitle = document.getElementById('overTitle');
   const overMsg = document.getElementById('overMsg');
   const finalScoreEl = document.getElementById('finalScore');
+  const rotateEl = document.getElementById('rotate');
+  let rotateDismissed = false;
+  rotateEl.addEventListener('click', () => { rotateDismissed = true; updateRotateHint(); });
+  rotateEl.addEventListener('touchend', e => { e.preventDefault(); rotateDismissed = true; updateRotateHint(); }, {passive:false});
 
   // Game state
   let state = 'menu'; // menu | playing | over
@@ -223,7 +283,11 @@
   tapBtn('retryBtn', startGame);
 
   // ---------- Game flow ----------
+  let fsTried = false;
   function startGame() {
+    if (!fsTried && window.matchMedia('(pointer: coarse)').matches) {
+      fsTried = true; tryFullscreen();
+    }
     state = 'playing';
     score = 0; lives = 3; ammo = 5;
     monkeys = []; bananas = []; bombs = []; particles = []; pickups = [];
@@ -431,15 +495,20 @@
 
     // sun
     ctx.fillStyle = '#fff4b0';
-    ctx.beginPath(); ctx.arc(W-80, 70, 34, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(W-70, 64, 34, 0, Math.PI*2); ctx.fill();
 
-    // clouds
+    // clouds (tersebar mengikuti lebar)
     ctx.fillStyle = 'rgba(255,255,255,.85)';
-    cloud(140, 80, 1); cloud(420, 55, .8); cloud(620, 110, 1.1);
+    const cloudN = Math.max(3, Math.round(W/260));
+    for (let i=0;i<cloudN;i++){
+      const seed = (i*53)%100/100;
+      cloud(60 + i*(W/cloudN) + seed*40, 50 + seed*70, 0.8 + seed*0.5);
+    }
 
-    // distant trees
-    for (let i=0;i<7;i++){
-      const tx = 40 + i*120;
+    // distant trees (mengisi seluruh lebar)
+    const treeGap = 120, treeN = Math.ceil(W/treeGap)+1;
+    for (let i=0;i<treeN;i++){
+      const tx = 40 + i*treeGap;
       ctx.fillStyle = '#5fa84a';
       ctx.beginPath(); ctx.arc(tx, GROUND-46, 34, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = '#7a4a23';
@@ -615,9 +684,24 @@
     const dt = Math.min(2.5, (ts - lastTime) / 16.67 || 1);
     lastTime = ts;
     if (state === 'playing') update(dt);
-    if (state === 'playing' || state === 'over') draw();
+    draw(); // selalu gambar latar + tokoh agar layar HP tidak kosong di menu
     requestAnimationFrame(loop);
   }
+
+  // ---------- Responsif & fullscreen ----------
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 200));
+
+  function tryFullscreen() {
+    const el = document.documentElement;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (fn) { try { fn.call(el); } catch (e) {} }
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(() => {});
+    }
+  }
+
+  resizeCanvas();
   requestAnimationFrame(t => { lastTime = t; loop(t); });
 
 })();
