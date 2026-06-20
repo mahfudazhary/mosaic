@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibu Berjilbab vs Monyet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    background: #1b2a1b;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: #fff;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  canvas {
+    background: linear-gradient(#bfe6ff 0%, #d9f3d0 55%, #8ec96a 100%);
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    touch-action: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  }
+  #hud {
+    position: absolute;
+    top: 12px; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 18px;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 0 2px 3px rgba(0,0,0,.5);
+    pointer-events: none;
+  }
+  #hud .hearts { color: #ff5b6e; }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.62);
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+  }
+  .overlay h1 { font-size: clamp(26px, 6vw, 46px); margin-bottom: 8px; }
+  .overlay p { font-size: clamp(14px, 3vw, 18px); margin-bottom: 6px; max-width: 540px; line-height: 1.5; opacity: .95; }
+  .overlay .big { font-size: clamp(20px, 5vw, 30px); color: #ffd84a; margin: 10px 0; }
+  button {
+    margin-top: 18px;
+    padding: 14px 34px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    background: #ffce3a;
+    color: #4a2a00;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #c89800;
+    transition: transform .05s, box-shadow .05s;
+  }
+  button:active { transform: translateY(4px); box-shadow: 0 2px 0 #c89800; }
+  .keys { margin-top: 16px; font-size: 13px; opacity: .8; line-height: 1.7; }
+  .hidden { display: none; }
+  #mobileCtl {
+    position: absolute;
+    bottom: 14px; left: 0; right: 0;
+    display: none;
+    justify-content: space-between;
+    padding: 0 16px;
+    pointer-events: none;
+  }
+  #mobileCtl .group { display: flex; gap: 12px; pointer-events: auto; }
+  #mobileCtl button {
+    margin: 0;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    font-size: 26px;
+    padding: 0;
+    box-shadow: 0 4px 0 rgba(0,0,0,.35);
+    background: rgba(255,255,255,.85);
+    color: #222;
+  }
+  #mobileCtl .throw { width: 78px; height: 78px; background: #ffce3a; color:#4a2a00; }
+  @media (pointer: coarse) { #mobileCtl { display: flex; } }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="800" height="450"></canvas>
+
+  <div id="hud" class="hidden">
+    <div>Skor: <span id="score">0</span></div>
+    <div class="hearts" id="hearts">❤❤❤</div>
+    <div>🍌 <span id="ammo">5</span></div>
+  </div>
+
+  <div id="startScreen" class="overlay">
+    <h1>🧕 Ibu Berjilbab vs Monyet 🐵</h1>
+    <p>Para ibu berjilbab hitam diserbu gerombolan monyet nakal!
+       Bantu Bu Siti <b>menghindar</b> dari monyet dan <b>melempar pisang</b> untuk mengusir mereka.</p>
+    <div class="keys">
+      ⌨️ <b>← →</b> jalan &nbsp;•&nbsp; <b>↑ / Spasi</b> lompat (menghindar) &nbsp;•&nbsp; <b>F / Enter</b> lempar pisang<br>
+      📱 Di HP gunakan tombol di bawah layar
+    </div>
+    <button id="startBtn">MULAI MAIN</button>
+  </div>
+
+  <div id="overScreen" class="overlay hidden">
+    <h1 id="overTitle">Game Over</h1>
+    <p class="big">Skor akhir: <span id="finalScore">0</span></p>
+    <p id="overMsg"></p>
+    <button id="retryBtn">MAIN LAGI</button>
+  </div>
+
+  <div id="mobileCtl">
+    <div class="group">
+      <button id="btnLeft">◀</button>
+      <button id="btnRight">▶</button>
+    </div>
+    <div class="group">
+      <button id="btnJump">⤴</button>
+      <button class="throw" id="btnThrow">🍌</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const GROUND = H - 60;
+
+  // UI refs
+  const hud = document.getElementById('hud');
+  const scoreEl = document.getElementById('score');
+  const heartsEl = document.getElementById('hearts');
+  const ammoEl = document.getElementById('ammo');
+  const startScreen = document.getElementById('startScreen');
+  const overScreen = document.getElementById('overScreen');
+  const overTitle = document.getElementById('overTitle');
+  const overMsg = document.getElementById('overMsg');
+  const finalScoreEl = document.getElementById('finalScore');
+
+  // Game state
+  let state = 'menu'; // menu | playing | over
+  let score = 0, lives = 3, ammo = 5;
+  let monkeys = [], bananas = [], bombs = [], particles = [], pickups = [];
+  let spawnTimer = 0, pickupTimer = 0, ammoRegen = 0, elapsed = 0;
+  let invuln = 0;
+  let lastTime = 0;
+
+  // Player (Bu Siti)
+  const player = {
+    x: 130, y: GROUND, w: 40, h: 74,
+    vx: 0, vy: 0,
+    onGround: true,
+    facing: 1,
+    throwCD: 0,
+    blink: 0
+  };
+
+  const keys = {};
+  const SPEED = 3.6, JUMP = -12.2, GRAV = 0.6;
+
+  // ---------- Input ----------
+  const keyMap = {
+    ArrowLeft: 'left', ArrowRight: 'right',
+    ArrowUp: 'jump', ' ': 'jump',
+    f: 'throw', F: 'throw', Enter: 'throw'
+  };
+  addEventListener('keydown', e => {
+    const a = keyMap[e.key];
+    if (a) { keys[a] = true; e.preventDefault(); }
+    if ((state === 'menu' || state === 'over') && (e.key === 'Enter' || e.key === ' ')) startGame();
+  });
+  addEventListener('keyup', e => {
+    const a = keyMap[e.key];
+    if (a) { keys[a] = false; e.preventDefault(); }
+  });
+
+  function bindBtn(id, action) {
+    const el = document.getElementById(id);
+    const set = v => e => { e.preventDefault(); keys[action] = v; };
+    el.addEventListener('touchstart', set(true), {passive:false});
+    el.addEventListener('touchend', set(false), {passive:false});
+    el.addEventListener('mousedown', set(true));
+    el.addEventListener('mouseup', set(false));
+    el.addEventListener('mouseleave', set(false));
+  }
+  bindBtn('btnLeft','left'); bindBtn('btnRight','right');
+  bindBtn('btnJump','jump'); bindBtn('btnThrow','throw');
+
+  document.getElementById('startBtn').onclick = startGame;
+  document.getElementById('retryBtn').onclick = startGame;
+
+  // ---------- Game flow ----------
+  function startGame() {
+    state = 'playing';
+    score = 0; lives = 3; ammo = 5;
+    monkeys = []; bananas = []; bombs = []; particles = []; pickups = [];
+    spawnTimer = 60; pickupTimer = 360; ammoRegen = 0; elapsed = 0; invuln = 0;
+    player.x = 130; player.y = GROUND; player.vx = 0; player.vy = 0;
+    player.onGround = true; player.facing = 1; player.throwCD = 0;
+    startScreen.classList.add('hidden');
+    overScreen.classList.add('hidden');
+    hud.classList.remove('hidden');
+    updateHud();
+  }
+
+  function gameOver() {
+    state = 'over';
+    hud.classList.add('hidden');
+    finalScoreEl.textContent = score;
+    overTitle.textContent = lives <= 0 ? '🐵 Kewalahan!' : 'Selesai';
+    overMsg.textContent = score >= 200
+      ? 'Luar biasa! Bu Siti pendekar pengusir monyet sejati! 🏆'
+      : 'Monyet-monyet itu nakal sekali. Coba lagi ya, Bu!';
+    overScreen.classList.remove('hidden');
+  }
+
+  function updateHud() {
+    scoreEl.textContent = score;
+    heartsEl.textContent = '❤'.repeat(Math.max(0,lives)) + '♡'.repeat(Math.max(0,3-lives));
+    ammoEl.textContent = ammo;
+  }
+
+  // ---------- Spawning ----------
+  function spawnMonkey() {
+    const fromRight = Math.random() < 0.5;
+    const big = Math.random() < 0.25;
+    monkeys.push({
+      x: fromRight ? W + 30 : -30,
+      y: GROUND,
+      w: big ? 46 : 36, h: big ? 50 : 40,
+      dir: fromRight ? -1 : 1,
+      speed: (1.1 + Math.random()*1.0 + elapsed*0.00018) * (big?0.85:1),
+      vy: 0, onGround: true,
+      hp: big ? 2 : 1,
+      jumpCD: 40 + Math.random()*80,
+      wob: Math.random()*Math.PI*2,
+      big
+    });
+  }
+
+  function spawnPickup() {
+    pickups.push({
+      x: 60 + Math.random()*(W-120),
+      y: -20, vy: 1.5,
+      w: 26, h: 26,
+      t: 0
+    });
+  }
+
+  // ---------- Update ----------
+  function update(dt) {
+    elapsed += dt;
+
+    // Player movement
+    player.vx = 0;
+    if (keys.left)  { player.vx = -SPEED; player.facing = -1; }
+    if (keys.right) { player.vx =  SPEED; player.facing =  1; }
+    if (keys.jump && player.onGround) {
+      player.vy = JUMP; player.onGround = false;
+    }
+    player.x += player.vx;
+    player.vy += GRAV;
+    player.y += player.vy;
+    if (player.y >= GROUND) { player.y = GROUND; player.vy = 0; player.onGround = true; }
+    player.x = Math.max(22, Math.min(W-22, player.x));
+
+    // Throw banana
+    if (player.throwCD > 0) player.throwCD -= dt;
+    if (keys.throw && player.throwCD <= 0 && ammo > 0) {
+      ammo--;
+      player.throwCD = 16;
+      bananas.push({
+        x: player.x + player.facing*22,
+        y: player.y - 44,
+        vx: player.facing * 8.5,
+        vy: -3.2,
+        r: 11,
+        spin: 0
+      });
+      updateHud();
+    }
+
+    // Ammo slow regen
+    ammoRegen += dt;
+    if (ammoRegen > 150 && ammo < 9) { ammo++; ammoRegen = 0; updateHud(); }
+
+    // Spawning
+    spawnTimer -= dt;
+    if (spawnTimer <= 0) {
+      spawnMonkey();
+      const base = Math.max(28, 95 - elapsed*0.012);
+      spawnTimer = base + Math.random()*40;
+    }
+    pickupTimer -= dt;
+    if (pickupTimer <= 0) { spawnPickup(); pickupTimer = 320 + Math.random()*220; }
+
+    if (invuln > 0) invuln -= dt;
+
+    // Bananas
+    for (let i = bananas.length-1; i>=0; i--) {
+      const b = bananas[i];
+      b.x += b.vx; b.vy += GRAV*0.5; b.y += b.vy; b.spin += 0.4;
+      if (b.x < -40 || b.x > W+40 || b.y > GROUND+30) { bananas.splice(i,1); continue; }
+      for (let j = monkeys.length-1; j>=0; j--) {
+        const m = monkeys[j];
+        if (Math.abs(b.x - m.x) < (m.w/2+b.r) && Math.abs(b.y - (m.y - m.h/2)) < (m.h/2+b.r)) {
+          m.hp--;
+          burst(b.x, b.y, '#ffe14d', 8);
+          bananas.splice(i,1);
+          if (m.hp <= 0) {
+            score += m.big ? 25 : 15;
+            burst(m.x, m.y - m.h/2, '#8a5a2b', 14);
+            monkeys.splice(j,1);
+          } else {
+            m.x += m.dir * -14; // knockback
+          }
+          updateHud();
+          break;
+        }
+      }
+    }
+
+    // Monkeys
+    for (let i = monkeys.length-1; i>=0; i--) {
+      const m = monkeys[i];
+      m.wob += 0.15;
+      // chase player horizontally
+      m.dir = player.x > m.x ? 1 : -1;
+      m.x += m.dir * m.speed;
+      // occasional jump
+      m.jumpCD -= dt;
+      if (m.onGround && m.jumpCD <= 0) {
+        m.vy = -7 - Math.random()*3; m.onGround = false; m.jumpCD = 70 + Math.random()*110;
+      }
+      m.vy += GRAV; m.y += m.vy;
+      if (m.y >= GROUND) { m.y = GROUND; m.vy = 0; m.onGround = true; }
+
+      // collide with player
+      if (invuln <= 0 &&
+          Math.abs(m.x - player.x) < (m.w/2 + player.w/2 - 6) &&
+          Math.abs((m.y - m.h/2) - (player.y - player.h/2)) < (m.h/2 + player.h/2 - 14)) {
+        lives--;
+        invuln = 90;
+        burst(player.x, player.y - 40, '#ff5b6e', 16);
+        // knock monkey away
+        m.x += m.dir * -40; m.vy = -6; m.onGround = false;
+        updateHud();
+        if (lives <= 0) { gameOver(); return; }
+      }
+    }
+
+    // Pickups (banana bunches)
+    for (let i = pickups.length-1; i>=0; i--) {
+      const p = pickups[i];
+      p.t += dt;
+      p.y += p.vy;
+      if (p.y >= GROUND-10) p.y = GROUND-10;
+      // collect
+      if (Math.abs(p.x - player.x) < 30 && Math.abs(p.y - (player.y - player.h/2)) < 48) {
+        ammo = Math.min(9, ammo + 3);
+        score += 5;
+        burst(p.x, p.y, '#ffe14d', 10);
+        pickups.splice(i,1);
+        updateHud();
+        continue;
+      }
+      if (p.t > 540) pickups.splice(i,1);
+    }
+
+    // survival score
+    score += dt * 0.05;
+    score = Math.round(score);
+
+    // particles
+    for (let i = particles.length-1; i>=0; i--) {
+      const pt = particles[i];
+      pt.x += pt.vx; pt.y += pt.vy; pt.vy += 0.25; pt.life -= dt;
+      if (pt.life <= 0) particles.splice(i,1);
+    }
+  }
+
+  function burst(x,y,color,n) {
+    for (let i=0;i<n;i++) {
+      const a = Math.random()*Math.PI*2, s = 1+Math.random()*4;
+      particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,life:14+Math.random()*14,color});
+    }
+  }
+
+  // ---------- Drawing ----------
+  function drawBackground() {
+    // sky gradient already via CSS bg, but draw scenery
+    ctx.clearRect(0,0,W,H);
+    const sky = ctx.createLinearGradient(0,0,0,H);
+    sky.addColorStop(0,'#bfe6ff'); sky.addColorStop(.55,'#d9f3d0'); sky.addColorStop(1,'#8ec96a');
+    ctx.fillStyle = sky; ctx.fillRect(0,0,W,H);
+
+    // sun
+    ctx.fillStyle = '#fff4b0';
+    ctx.beginPath(); ctx.arc(W-80, 70, 34, 0, Math.PI*2); ctx.fill();
+
+    // clouds
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    cloud(140, 80, 1); cloud(420, 55, .8); cloud(620, 110, 1.1);
+
+    // distant trees
+    for (let i=0;i<7;i++){
+      const tx = 40 + i*120;
+      ctx.fillStyle = '#5fa84a';
+      ctx.beginPath(); ctx.arc(tx, GROUND-46, 34, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#7a4a23';
+      ctx.fillRect(tx-6, GROUND-46, 12, 50);
+    }
+
+    // ground
+    ctx.fillStyle = '#6db84e';
+    ctx.fillRect(0, GROUND, W, H-GROUND);
+    ctx.fillStyle = '#4f9437';
+    ctx.fillRect(0, GROUND, W, 8);
+  }
+  function cloud(x,y,s){
+    ctx.beginPath();
+    ctx.arc(x,y,20*s,0,Math.PI*2);
+    ctx.arc(x+24*s,y+6*s,16*s,0,Math.PI*2);
+    ctx.arc(x-22*s,y+6*s,15*s,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  function drawPlayer() {
+    const {x,y,w,h,facing} = player;
+    if (invuln > 0 && Math.floor(invuln/6)%2===0) { /* blink: skip frame */ return; }
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(facing, 1);
+
+    const topY = -h;            // top of head
+    const bodyTop = topY + 30;
+
+    // dress / abaya (black)
+    ctx.fillStyle = '#15151a';
+    ctx.beginPath();
+    ctx.moveTo(-w/2+4, bodyTop);
+    ctx.lineTo(w/2-4, bodyTop);
+    ctx.lineTo(w/2+6, -2);
+    ctx.lineTo(-w/2-6, -2);
+    ctx.closePath();
+    ctx.fill();
+
+    // arm + hand (skin) throwing pose
+    ctx.strokeStyle = '#15151a'; ctx.lineWidth = 9; ctx.lineCap='round';
+    ctx.beginPath();
+    ctx.moveTo(4, bodyTop+10);
+    const armX = player.throwCD > 8 ? w/2+16 : w/2+4;
+    const armY = player.throwCD > 8 ? bodyTop-2 : bodyTop+16;
+    ctx.lineTo(armX, armY);
+    ctx.stroke();
+    ctx.fillStyle = '#e8b98c';
+    ctx.beginPath(); ctx.arc(armX, armY, 5, 0, Math.PI*2); ctx.fill();
+
+    // head (jilbab black framing face)
+    ctx.fillStyle = '#15151a';
+    ctx.beginPath();
+    ctx.arc(0, topY+18, 18, 0, Math.PI*2);
+    ctx.fill();
+    // jilbab drape over shoulders
+    ctx.beginPath();
+    ctx.moveTo(-18, topY+18);
+    ctx.quadraticCurveTo(-26, bodyTop+8, -14, bodyTop+12);
+    ctx.lineTo(14, bodyTop+12);
+    ctx.quadraticCurveTo(26, bodyTop+8, 18, topY+18);
+    ctx.fill();
+
+    // face (skin)
+    ctx.fillStyle = '#f0c49a';
+    ctx.beginPath();
+    ctx.ellipse(2, topY+18, 11, 13, 0, 0, Math.PI*2);
+    ctx.fill();
+    // eyes
+    ctx.fillStyle = '#222';
+    ctx.beginPath(); ctx.arc(0, topY+16, 1.8, 0, Math.PI*2);
+    ctx.arc(7, topY+16, 1.8, 0, Math.PI*2); ctx.fill();
+    // smile
+    ctx.strokeStyle='#a85'; ctx.lineWidth=1.6;
+    ctx.beginPath(); ctx.arc(3, topY+21, 4, .15*Math.PI, .85*Math.PI); ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function drawMonkey(m) {
+    ctx.save();
+    ctx.translate(m.x, m.y);
+    const bob = Math.sin(m.wob)*2;
+    const cy = -m.h/2 + bob;
+    // body
+    ctx.fillStyle = '#7a4f2a';
+    ctx.beginPath(); ctx.ellipse(0, cy+m.h*0.18, m.w*0.42, m.h*0.34, 0, 0, Math.PI*2); ctx.fill();
+    // tail
+    ctx.strokeStyle = '#7a4f2a'; ctx.lineWidth=4; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(m.dir*-m.w*0.35, cy+m.h*0.2);
+    ctx.quadraticCurveTo(m.dir*-m.w*0.8, cy, m.dir*-m.w*0.6, cy-m.h*0.2);
+    ctx.stroke();
+    // head
+    ctx.fillStyle = '#8a5a30';
+    ctx.beginPath(); ctx.arc(m.dir*m.w*0.1, cy-m.h*0.15, m.w*0.34, 0, Math.PI*2); ctx.fill();
+    // ears
+    ctx.beginPath();
+    ctx.arc(m.dir*m.w*0.1 - m.w*0.3, cy-m.h*0.18, m.w*0.13, 0, Math.PI*2);
+    ctx.arc(m.dir*m.w*0.1 + m.w*0.3, cy-m.h*0.18, m.w*0.13, 0, Math.PI*2);
+    ctx.fill();
+    // face
+    ctx.fillStyle = '#e7c39a';
+    ctx.beginPath(); ctx.ellipse(m.dir*m.w*0.12, cy-m.h*0.08, m.w*0.2, m.h*0.18, 0, 0, Math.PI*2); ctx.fill();
+    // eyes (angry)
+    ctx.fillStyle = '#222';
+    ctx.beginPath();
+    ctx.arc(m.dir*m.w*0.05, cy-m.h*0.16, 1.8, 0, Math.PI*2);
+    ctx.arc(m.dir*m.w*0.2, cy-m.h*0.16, 1.8, 0, Math.PI*2);
+    ctx.fill();
+    // hp marker for big
+    if (m.big && m.hp>1) {
+      ctx.fillStyle='#ff5b6e';
+      ctx.fillRect(-m.w*0.4, cy-m.h*0.6, m.w*0.8, 4);
+    }
+    ctx.restore();
+  }
+
+  function drawBanana(b) {
+    ctx.save();
+    ctx.translate(b.x, b.y);
+    ctx.rotate(b.spin);
+    ctx.fillStyle = '#ffd83b';
+    ctx.strokeStyle = '#b58a00';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(0, 0, b.r, Math.PI*0.15, Math.PI*1.15);
+    ctx.arc(2, 2, b.r*0.78, Math.PI*1.15, Math.PI*0.15, true);
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#6b4f00';
+    ctx.fillRect(b.r-3, -2, 3, 4);
+    ctx.restore();
+  }
+
+  function drawPickup(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y + Math.sin(p.t*0.1)*2);
+    // bunch of bananas
+    ctx.fillStyle='#ffd83b'; ctx.strokeStyle='#b58a00'; ctx.lineWidth=1.5;
+    for (let k=-1;k<=1;k++){
+      ctx.save(); ctx.rotate(k*0.35);
+      ctx.beginPath(); ctx.arc(0,0,11,Math.PI*0.15,Math.PI*1.15);
+      ctx.arc(2,2,8,Math.PI*1.15,Math.PI*0.15,true); ctx.closePath();
+      ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+    ctx.fillStyle='#6b4f00'; ctx.fillRect(-2,-13,4,5);
+    ctx.restore();
+  }
+
+  function draw() {
+    drawBackground();
+    pickups.forEach(drawPickup);
+    monkeys.forEach(drawMonkey);
+    drawPlayer();
+    bananas.forEach(drawBanana);
+    // particles
+    particles.forEach(pt=>{
+      ctx.globalAlpha = Math.max(0, pt.life/26);
+      ctx.fillStyle = pt.color;
+      ctx.fillRect(pt.x-2, pt.y-2, 4, 4);
+    });
+    ctx.globalAlpha = 1;
+
+    if (invuln > 0) {
+      ctx.fillStyle = 'rgba(255,60,90,'+ (0.12*Math.max(0,invuln/90)) +')';
+      ctx.fillRect(0,0,W,H);
+    }
+  }
+
+  // ---------- Loop ----------
+  function loop(ts) {
+    const dt = Math.min(2.5, (ts - lastTime) / 16.67 || 1);
+    lastTime = ts;
+    if (state === 'playing') update(dt);
+    if (state === 'playing' || state === 'over') draw();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(t => { lastTime = t; loop(t); });
+
+})();
+</script>
+</body>
+</html>
